@@ -38,15 +38,19 @@ Extract the zip file and just drop the contents in the wp-content/plugins/ direc
 == Frequently Asked Questions ==
 
 = Q. Who can create user profile template? =
+
 A. Only administrator can create user profile template
 
 = Q. Who can access settings menu =
+
 A. Only administrator can access settings menu.
 
 = Q. Who can access users list page =
+
 A. All kind of users can access users list page.
 
 = Q. Can user check other user's profile =
+
 A. Yes, any user can access other user's profile from users list page.
 
 == Screenshots ==
