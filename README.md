@@ -8,7 +8,7 @@ Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-With the "User Profile Builder"-plugin you can create users profile template. 
+With the User Profile Builder plugin you can create users profile template layout. 
 
 == Description ==
 
