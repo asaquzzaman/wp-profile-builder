@@ -64,6 +64,7 @@ A. Yes, any user can access other user's profile from users list page.
 == Changelog ==
 
 = 0.1 =
+
 Initial version released
 
 
