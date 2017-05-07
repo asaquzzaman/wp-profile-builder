@@ -22,6 +22,28 @@ module.exports = function(grunt) {
             }
         },
 
+        uglify: {
+            minify: {
+                files: {
+                    '<%= dirs.js %>/*.min.js': ['<%= dirs.js %>/*.js'],
+
+                    
+                }
+            }
+        },
+
+        cssmin: {
+            options: {
+                mergeIntoShorthands: false,
+                roundingPrecision: -1
+            },
+            target: {
+                files: {
+                  '<%= dirs.css %>/style.min.css': ['<%= dirs.css %>/style.css'],
+                }
+            }
+        },
+
         watch: {
             less: {
                 files: ['<%= dirs.less %>/admin/*.less', '<%= dirs.less %>/front-end/*.less' ],
@@ -37,6 +59,12 @@ module.exports = function(grunt) {
     // Load NPM tasks to be used here
     grunt.loadNpmTasks( 'grunt-contrib-less' );
     grunt.loadNpmTasks( 'grunt-contrib-watch' );
+    grunt.loadNpmTasks( 'grunt-contrib-uglify' );
+    grunt.loadNpmTasks( 'grunt-contrib-cssmin' );
 
     grunt.registerTask('default', ['less']);
+    grunt.registerTask('release', [
+        'uglify',
+        'cssmin'
+    ]);
 };

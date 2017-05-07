@@ -33,7 +33,7 @@ class WPUP_Scripts_Register {
 	 * Hook in methods.
 	 */
 	public static function init() {
-		self::$suffix  = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
+		self::$suffix  = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '';
         self::$version = time();
 		
 		add_action( 'init', array( __CLASS__, 'register_scripts' ) );

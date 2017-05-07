@@ -1,5 +1,5 @@
 {
-  "name": "WPUP",
+  "name": "WP-User-Profile-Builder",
   "version": "0.0.1",
   "description": "Open Source User Profile Management Platform for Wordpress",
   "author": "Asaquzzaman Mishu",
@@ -8,6 +8,8 @@
   "devDependencies": {
     "grunt": "^1.0.1",
     "grunt-contrib-less": "^0.11.4",
-    "grunt-contrib-watch": "^0.6.1"
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-contrib-uglify": "^2.3.0",
+    "grunt-contrib-cssmin": "^2.0.0"
   }
 }

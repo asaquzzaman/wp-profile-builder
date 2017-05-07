@@ -1,0 +1,73 @@
+.wpup #side-sortables {
+  position: fixed;
+  margin-right: 10px;
+  border: 1px solid #e5e5e5;
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
+}
+.wpup #side-sortables .accordion-section-content {
+  padding: 20px 15px 15px 15px;
+}
+.wpup #wpup-menu-management {
+  background: #f5f5f5;
+  border: 1px solid #e5e5e5;
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
+  position: relative;
+}
+.wpup .ui-draggable-dragging {
+  width: 130px !important;
+  text-align: center;
+}
+.wpup .wpup-form-tb-tag .wpup-form-td-tag {
+  vertical-align: top;
+}
+.wpup .clear {
+  clear: both;
+}
+.wpup .wpup-menu-type {
+  margin: 10px 0 10px 0px;
+}
+.wpup .wpup-menu-type li {
+  display: inline;
+}
+.wpup .wpup-menu-type li .button {
+  width: 45%;
+  text-align: center;
+}
+.wpup .wpup-menu-type li:first-child {
+  margin-right: 8%;
+}
+.wpup #post-body-content,
+.wpup .edit-form-section {
+  margin-bottom: 0;
+}
+.wpup .wpup-dorp-here {
+  width: 70%;
+  padding: 10%;
+  position: absolute;
+  text-align: center;
+  top: 26%;
+  border: 1px dashed;
+  margin-left: 5%;
+  font-weight: 800;
+}
+.wpup #post-body {
+  padding: 0 10px 0px;
+  margin: 0;
+  padding: 0;
+  min-width: 400px;
+  overflow-x: auto;
+}
+.wpup #post-body .wpup-individual-field-wrap {
+  margin-bottom: 10px;
+}
+.wpup .wpup-field-type-warp .wpup-field {
+  width: 47%;
+}
+.wpup .wpup-ui-state-highlight {
+  display: block;
+  border: 1px dashed #3B699F !important;
+  height: 50px;
+  width: 52%;
+}

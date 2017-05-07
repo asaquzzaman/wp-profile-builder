@@ -25,7 +25,7 @@
                 </div>
 
                 <div v-if="isUpdateMode">
-                    <input type="submit" value="<?php _e( 'Submit', 'wpup' );?>">
+                    <input class="button button-primary" type="submit" value="<?php _e( 'Submit', 'wpup' );?>">
                     <a class="wpup-cancel-link" @click.prevent="cancelEditMode()" href=""><?php _e( 'Cancel', 'wpup' );?></a>
                 </div>
             </form>

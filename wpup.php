@@ -2,7 +2,7 @@
 /**
  * Plugin Name: WP User Profile Builder
  * Plugin URI: https://github.com/asaquzzaman/wp-user-profile-builder
- * Description: With the "User Profile Builder"-plugin you can create users profile template. 
+ * Description: With the User Profile Builder plugin you can create users profile template layout. 
  * Version: 0.1 Beta
  * Author: asaquzzaman
  * Author URI: http://mishubd.com
