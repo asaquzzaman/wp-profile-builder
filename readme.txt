@@ -1,4 +1,4 @@
-=== WP User Profile Builder ===
+=== WP Profile Builder ===
 Contributors: asaquzzaman
 Tags: profile builder, user profile, profile, user custom field, profile maker
 Requires at least: 4.0
@@ -7,11 +7,11 @@ Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-With the "User Profile Builder"-plugin you can create users profile template. 
+With the Profile plugin you can create users profile template. 
 
 == Description ==
 
-The WordPress User Profile Builder plugin. Manage your User Profile simply with the user tools and options. It gives you to create custom user fields. It also provide you users list page, real time search users, individual user profile and many more. 
+The WordPress Profile plugin. Manage your User Profile simply with the user tools and options. It gives you to create custom user fields. It also provide you users list page, real time search users, individual user profile and many more. 
 
 = Features =
 
