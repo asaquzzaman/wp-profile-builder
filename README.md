@@ -1,5 +1,4 @@
-=== Profile ===
-
+=== WP Profile Builder ===
 Contributors: asaquzzaman
 Tags: profile builder, user profile, profile, user custom field, profile maker
 Requires at least: 4.0
@@ -8,11 +7,15 @@ Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-With the Profile plugin you can create users profile template layout. 
+With the WP Profile Builder plugin you can create users profile template. 
 
 == Description ==
 
-The WordPress Profile plugin. Manage your User Profile simply with the user tools and options. It gives you to create custom user fields. It also provide you users list page, real time search users, individual user profile and many more. 
+With the WP Profile Builder plugin you can create users profile template.
+
+[youtube https://www.youtube.com/watch?v=ZAqGxV7Y56o]
+
+The WordPress Profile Builder plugin. Manage your User Profile simply with the user tools and options. It gives you to create custom user fields. It also provide you users list page, real time search users, individual user profile and many more. 
 
 = Features =
 
@@ -29,7 +32,7 @@ The WordPress Profile plugin. Manage your User Profile simply with the user tool
    * Check any user profile
 
 = Contribute =
-This may have bugs and lack of many features. If you want to contribute on this project, you are more than welcome. Please fork the repository from [Github](https://github.com/asaquzzaman/wp-user-profile-builder).
+This may have bugs and lack of many features. If you want to contribute on this project, you are more than welcome. Please fork the repository from [Github](https://github.com/asaquzzaman/wp-profile-builder).
 
 == Installation ==
 
@@ -41,17 +44,15 @@ Extract the zip file and just drop the contents in the wp-content/plugins/ direc
 
 A. Only administrator can create user profile template
 
-= Q. Who can access settings menu =
+= Q. Who can access profile builder settings menu =
 
 A. Only administrator can access settings menu.
 
-= Q. Who can access users list page =
+= Q. Who can access profile builder users list page =
 
-A. All kind of users can access users list page.
+A. All kind of users can access profile builder users list page.
 
 = Q. Can user check other user's profile =
-
-A. Yes, any user can access other user's profile from users list page.
 
 == Screenshots ==
 
@@ -64,7 +65,6 @@ A. Yes, any user can access other user's profile from users list page.
 == Changelog ==
 
 = 0.1 =
-
 Initial version released
 
 

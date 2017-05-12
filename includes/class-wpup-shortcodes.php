@@ -17,7 +17,7 @@ class WPUP_Shortcodes {
 	 */
 	public static function init() {
 		$shortcodes = array(
-			'wpup_profile_builder' => __CLASS__ . '::profile_builder',
+			//'wpup_profile_builder' => __CLASS__ . '::profile_builder',
 			'wpup_members'         => __CLASS__ . '::members',
 			'wpup_my_profile'      => __CLASS__ . '::my_profile',
 		);

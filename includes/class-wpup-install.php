@@ -43,15 +43,15 @@ class WPUP_Install {
     public static function create_pages() {
         
         $pages = apply_filters( 'wpup_frontend_page', array(
-            array(
-                'name'    => 'profile-builder',
-                'title'   => 'Profile Builder',
-                'content' => '[wpup_profile_builder]',
-                'option'  => 'wpup_frontend_page_id'
-            ),
+            // array(
+            //     'name'    => 'profile-builder',
+            //     'title'   => 'Profile Builder',
+            //     'content' => '[wpup_profile_builder]',
+            //     'option'  => 'wpup_frontend_page_id'
+            // ),
             array(
                 'name'    => 'members',
-                'title'   => 'Members',
+                'title'   => 'User Lists',
                 'content' => '[wpup_members]',
                 'option'  => 'wpup_members_page_id'
             ),
