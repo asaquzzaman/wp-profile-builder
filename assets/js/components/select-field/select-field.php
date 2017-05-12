@@ -28,7 +28,7 @@
                         {{ option }}
                     </option>
                 </select>
-                <div v-if="ele.ele_settings_field.description">{{ ele.ele_settings_field_val.description }}</div>
+                <div class="wpup-help-text" v-if="ele.ele_settings_field_val.description != ''">{{ ele.ele_settings_field_val.description }}</div>
             </div>
         </div>
     </div>

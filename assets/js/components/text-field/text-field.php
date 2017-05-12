@@ -19,7 +19,7 @@
 
         <div v-if="isUpdateMode" class="wpup-label-content wpup-clearfix">
             <input class="wpup-update-individual-field" :disabled="ele.ele_settings_field_val.disabled" :name="ele.ele_settings_field_val.name" v-model="ele.field_val" :placeholder="ele.ele_settings_field_val.placeholder" type="text">
-            <div v-if="ele.ele_settings_field.description">{{ ele.ele_settings_field_val.description }}</div>
+            <div class="wpup-help-text" v-if="ele.ele_settings_field_val.description != ''">{{ ele.ele_settings_field_val.description }}</div>
         </div>
     </div>
 </div>
