@@ -1,7 +1,7 @@
 <div class="wpup-el-sort"> 
     <div v-if="isTemplateMode" @click.self.prevent="elementUpdate( row, col, ele)" class="wpup-update-ele">
-        <i class="wpup-ele-drag fa fa-arrows-alt" aria-hidden="true"></i>
-        <?php _e( 'Element', 'wpup' ); ?> #{{ele.id}}
+        <div class="wpup-row-move-icon"><i class="wpup-ele-drag fa fa-arrows-alt" aria-hidden="true"></i></div>
+        <div class="wpup-row-id wpup-clearfix"><?php _e( 'Element', 'wpup' ); ?> #{{ele.id}}</div>
     </div>
     <div class="wpup-label-wrap">
         <label  class="wpup-label">{{ele.ele_settings_field_val.label}}</label>

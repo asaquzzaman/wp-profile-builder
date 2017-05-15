@@ -12,25 +12,27 @@
 
             <a v-if="userCanUpdateProfile" @click.prevent="profileUpdateMode()" href="#">View as profile update mode</a>
             <form action="">
-                <wpup-profile-header></wpup-profile-header>
-                
-                <div id="wpup-profile-content-wrap">
+                <div class="wpup-profile-wrap">
+                    <wpup-profile-header></wpup-profile-header>
                     
-                        <div v-wpup-row-sortable  id="wpup-drop-zone" :style="dropZon()">
-                            
-                            <wpup-row 
-                                v-for="( row, index ) in rows"  
-                                :row="row" 
-                                :els="els" 
-                                :rows="rows" 
-                                :cols="cols"
-                                :key="row.id"
-                                :index="index">
+                    <div id="wpup-profile-content-wrap">
                         
-                            </wpup-row>
-                        </div> 
+                            <div v-wpup-row-sortable  id="wpup-drop-zone" :style="dropZon()">
+                                
+                                <wpup-row 
+                                    v-for="( row, index ) in rows"  
+                                    :row="row" 
+                                    :els="els" 
+                                    :rows="rows" 
+                                    :cols="cols"
+                                    :key="row.id"
+                                    :index="index">
+                            
+                                </wpup-row>
+                            </div> 
 
-                        <div v-if="wpup_drop_here" class="wpup-drop-here"><?php _e( 'Drop your contenet with new row', 'wpup' ); ?></div>  
+                            <div v-if="wpup_drop_here" class="wpup-drop-here"><?php _e( 'Drop your contenet with new row', 'wpup' ); ?></div>  
+                    </div>
                 </div>
             </form>
         </div>

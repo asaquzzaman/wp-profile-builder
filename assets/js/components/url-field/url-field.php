@@ -1,9 +1,9 @@
 <div class="wpup-el-sort"> 
     <div v-if="isTemplateMode" @click.self.prevent="elementUpdate( row, col, ele)" class="wpup-update-ele">
-        <i class="wpup-ele-drag fa fa-arrows-alt" aria-hidden="true"></i>
-        <?php _e( 'Element', 'wpup' ); ?> #{{ele.id}}
+        <div class="wpup-row-move-icon"><i class="wpup-ele-drag fa fa-arrows-alt" aria-hidden="true"></i></div>
+        <div class="wpup-row-id"><?php _e( 'Element', 'wpup' ); ?> #{{ele.id}}</div>
     </div>
-    <div class="wpup-label-wrap">
+    <div class="wpup-label-wrap wpup-clearfix">
         <label class="wpup-label">{{ele.ele_settings_field_val.label}}</label>
        
         <!-- <div v-if="!isUpdateMode && ele.field_val == ''" class="wpup-label-content wpup-clearfix">{{ ele.ele_settings_field_val.content }}</div>
@@ -16,7 +16,7 @@
             <a :href="ele.field_val" target="_blank"><?php _e( 'View this site', 'wpup' ); ?></a>
         </div>
         
-        <div v-if="view_self_profile(ele)" class="wpup-label-content wpup-clearfix">
+        <div v-if="view_self_profile(ele)" class="wpup-label-content  ">
             {{ele.ele_settings_field_val.content}}
         </div>
          <div v-if="view_as_other_user(ele)" class="wpup-label-content wpup-clearfix">

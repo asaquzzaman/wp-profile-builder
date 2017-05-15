@@ -180,10 +180,6 @@
   border-radius: 3px 3px 0 0;
   overflow: hidden;
   text-align: center;
-  border-top: 1px solid #eee;
-  border-left: 1px solid #eee;
-  border-right: 1px solid #eee;
-  border-bottom: 1px solid #eee;
   font-size: 12px;
 }
 .wpup-profile-header-wrap input {
@@ -593,11 +589,12 @@
   font-size: 12px;
 }
 #wpup-profile-content-wrap #wpup-drop-zone .wpup-section {
-  padding: 4px 8px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
-  background: #eee;
+  padding: 6px 6px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  background: #767676;
   border-radius: 3px;
   font-size: 13px;
+  color: #fff;
 }
 #wpup-profile-content-wrap #wpup-drop-zone .wpup-drop-messsage {
   text-align: center;
@@ -605,8 +602,7 @@
 }
 #wpup-profile-content-wrap #wpup-drop-zone .wpup-row {
   position: relative;
-  border: 1px solid #eee;
-  margin-top: 10px;
+  border-top: 1px solid #eee;
 }
 #wpup-profile-content-wrap #wpup-drop-zone .wpup-row .wpup-col-wrap {
   padding: 5px;
@@ -630,7 +626,7 @@
   width: 60%;
   word-wrap: break-word;
   color: #6f6f6f;
-  font-size: 100%;
+  font-size: 12px;
   font-family: inherit;
 }
 #wpup-profile-content-wrap #wpup-drop-zone .wpup-row .wpup-label-wrap .wpup-help-text {
@@ -649,14 +645,56 @@
   margin-top: 15px;
   font-size: 14px;
 }
+#wpup-profile-content-wrap #wpup-drop-zone .wpup-row .wpup-update-row,
+#wpup-profile-content-wrap #wpup-drop-zone .wpup-row .wpup-update-col,
+#wpup-profile-content-wrap #wpup-drop-zone .wpup-row .wpup-update-ele {
+  background: #0073aa;
+  letter-spacing: 1px;
+  color: #fff;
+  z-index: 9999;
+  padding: 0px 5px 0px 0px;
+  opacity: 0.6;
+}
+#wpup-profile-content-wrap #wpup-drop-zone .wpup-row .wpup-update-row .wpup-row-move-icon,
+#wpup-profile-content-wrap #wpup-drop-zone .wpup-row .wpup-update-col .wpup-row-move-icon,
+#wpup-profile-content-wrap #wpup-drop-zone .wpup-row .wpup-update-ele .wpup-row-move-icon,
+#wpup-profile-content-wrap #wpup-drop-zone .wpup-row .wpup-update-row .wpup-ele-move-icon,
+#wpup-profile-content-wrap #wpup-drop-zone .wpup-row .wpup-update-col .wpup-ele-move-icon,
+#wpup-profile-content-wrap #wpup-drop-zone .wpup-row .wpup-update-ele .wpup-ele-move-icon {
+  width: 12px;
+  display: inline-block;
+  cursor: move;
+  margin: 0;
+  padding: 0px;
+  text-align: center;
+  padding: 0 12px 0 5px;
+}
+#wpup-profile-content-wrap #wpup-drop-zone .wpup-row .wpup-update-row .wpup-row-move-icon:hover,
+#wpup-profile-content-wrap #wpup-drop-zone .wpup-row .wpup-update-col .wpup-row-move-icon:hover,
+#wpup-profile-content-wrap #wpup-drop-zone .wpup-row .wpup-update-ele .wpup-row-move-icon:hover,
+#wpup-profile-content-wrap #wpup-drop-zone .wpup-row .wpup-update-row .wpup-ele-move-icon:hover,
+#wpup-profile-content-wrap #wpup-drop-zone .wpup-row .wpup-update-col .wpup-ele-move-icon:hover,
+#wpup-profile-content-wrap #wpup-drop-zone .wpup-row .wpup-update-ele .wpup-ele-move-icon:hover {
+  background: #3f94bd;
+}
+#wpup-profile-content-wrap #wpup-drop-zone .wpup-row .wpup-update-row .wpup-row-id,
+#wpup-profile-content-wrap #wpup-drop-zone .wpup-row .wpup-update-col .wpup-row-id,
+#wpup-profile-content-wrap #wpup-drop-zone .wpup-row .wpup-update-ele .wpup-row-id,
+#wpup-profile-content-wrap #wpup-drop-zone .wpup-row .wpup-update-row .wpup-ele-id,
+#wpup-profile-content-wrap #wpup-drop-zone .wpup-row .wpup-update-col .wpup-ele-id,
+#wpup-profile-content-wrap #wpup-drop-zone .wpup-row .wpup-update-ele .wpup-ele-id {
+  display: inline-block;
+}
+#wpup-profile-content-wrap #wpup-drop-zone .wpup-row .wpup-update-row .wpup-ele-edit-id,
+#wpup-profile-content-wrap #wpup-drop-zone .wpup-row .wpup-update-col .wpup-ele-edit-id,
+#wpup-profile-content-wrap #wpup-drop-zone .wpup-row .wpup-update-ele .wpup-ele-edit-id {
+  padding: 0 0px 0 5px;
+}
 #wpup-profile-content-wrap #wpup-drop-zone .wpup-row .wpup-update-row {
   display: none;
   position: absolute;
   top: -18px;
-  z-index: 99999;
   font-size: 8px;
-  background: aliceblue;
-  padding: 0px 5px 0px 5px;
   margin-left: -1px;
   cursor: pointer;
   font-weight: 800;
@@ -665,10 +703,7 @@
   display: none;
   position: absolute;
   top: -18px;
-  z-index: 99999;
   font-size: 8px;
-  background: aliceblue;
-  padding: 0px 5px 0px 5px;
   right: -1px;
   font-weight: 800;
   cursor: pointer;
@@ -677,13 +712,10 @@
   display: none;
   position: absolute;
   left: 35%;
-  z-index: 99999;
   font-size: 8px;
-  background: aliceblue;
-  padding: 0px 5px 0px 5px;
   cursor: pointer;
   font-weight: 800;
-  top: -8px;
+  top: -3px;
 }
 #wpup-profile-content-wrap #wpup-drop-zone .wpup-row .wpup-ele-wrap {
   position: relative;
@@ -928,4 +960,7 @@
 .wpup-member-content-wrap .wpup-content-width,
 .wpup-single-member-content-wrap .wpup-content-width {
   margin: 0 auto;
+}
+.wpup-profile-wrap {
+  border: 1px solid #eee;
 }

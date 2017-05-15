@@ -13,3 +13,6 @@
   left: auto;
   top: 61px;
 }
+.wpup-ele-wrap:hover > .wpup-el-sort {
+  border: 1px dashed;
+}
