@@ -462,6 +462,7 @@
   list-style: none;
   font-size: 12px;
   width: 30%;
+  border: 1px solid #eee;
 }
 #wpup-settings-panel-wrap #wpup-settings-tab-wrap .wpup-settings-parent .wpup-settings-child .wpup-new-col .wpup-width-field-wrap,
 #wpup-settings-panel-wrap #wpup-settings-tab-wrap .wpup-settings-parent .wpup-settings-child .wpup-new-field .wpup-width-field-wrap,
@@ -715,12 +716,18 @@
   font-size: 8px;
   cursor: pointer;
   font-weight: 800;
-  top: -3px;
+  top: -17px;
+  z-index: 99999999;
 }
 #wpup-profile-content-wrap #wpup-drop-zone .wpup-row .wpup-ele-wrap {
   position: relative;
-  padding-top: 15px;
-  padding-bottom: 15px;
+}
+#wpup-profile-content-wrap #wpup-drop-zone .wpup-row .wpup-ele-wrap .wpup-el-sort {
+  padding: 11px 0 11px 0;
+  margin: 1px;
+}
+#wpup-profile-content-wrap #wpup-drop-zone .wpup-row .wpup-ele-wrap .wpup-el-sort:hover {
+  margin: 0px;
 }
 #wpup-profile-content-wrap #wpup-drop-zone .wpup-row:hover > .wpup-update-row {
   display: block;
@@ -963,4 +970,25 @@
 }
 .wpup-profile-wrap {
   border: 1px solid #eee;
+}
+.wpup-btn-white {
+  text-align: center;
+  text-decoration: none;
+  background: #f7f7f7;
+  color: #0073aa;
+  padding: 4px 8px;
+  display: inline-block;
+  border-radius: 2px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+.wpup-btn-white:hover {
+  border-color: #008EC2;
+  background: #00a0d2;
+  color: #fff;
+}
+.wpup-btn-white:focus,
+.wpup-btn-white:active,
+.wpup-btn-white:visited {
+  border-color: #ccc;
 }

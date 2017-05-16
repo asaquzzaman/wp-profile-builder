@@ -8,11 +8,14 @@
   float: left;
   width: 65%;
 }
+.wpup-user-profile-admin .wpup-content-wrap .wpup-profile-builder-btn-wrap {
+  margin-bottom: 5px;
+}
 .wpup-user-profile-admin #wpup-settings-panel-wrap {
   right: 1%;
   left: auto;
   top: 61px;
 }
 .wpup-ele-wrap:hover > .wpup-el-sort {
-  border: 1px dashed;
+  border: 1px dashed #999;
 }
