@@ -2,14 +2,14 @@
 
 Contributors: asaquzzaman
 
-Tags: profile builder, user profile, profile, user custom field, profile maker
+Tags: profile builder, wp profile builder, wordpress profile builder, user profile, profile, user custom field, profile maker
 Requires at least: 4.0
 Tested up to: 4.7.3
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-With the WP Profile Builder plugin you can create user profile template layout. User can update their profile and check others user profile from front-end.
+With the WP Profile Builder plugin you can create user profile template layout. User can update and check others user profile from front-end.
 
 == Description ==
 
