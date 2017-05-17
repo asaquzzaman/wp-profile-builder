@@ -3,3 +3,4 @@ Gruntfile.js
 package.json
 .git
 .gitignore
+node_modules
