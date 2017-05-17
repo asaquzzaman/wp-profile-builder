@@ -1,7 +1,7 @@
 === WP Profile Builder ===
 
 Contributors: asaquzzaman
-Tags: profile builder, wp profile builder, wordpress profile builder, user profile, profile, user custom field, profile maker
+Tags: profile builder, wp profile builder, wordpress profile builder, user profile, profile, user custom field, profile maker, wp profile, wordpress profile
 Requires at least: 4.0
 Tested up to: 4.7.3
 Stable tag: trunk
