@@ -701,12 +701,11 @@
             }
 
             .wpup-update-row, .wpup-update-col, .wpup-update-ele {
-                background: #0073aa;
+                background: #648da0;
                 letter-spacing: 1px;
                 color: #fff;
                 z-index: 9999;
                 padding: 0px 5px 0px 0px;
-                opacity: 0.6;
 
                 .wpup-row-move-icon, .wpup-ele-move-icon {
                     width: 12px;
@@ -753,28 +752,23 @@
                 cursor: pointer;
             }
 
-            .wpup-update-ele {
-                display: none;
-                position: absolute;
-                left: 35%;
-                font-size: 8px;
-                //background: #0073aa;//aliceblue;
-                cursor: pointer;
-                font-weight: 800;
-                top: -17px;
-                z-index: 99999999;
-            }
+            // .wpup-update-ele {
+            //     display: none;
+            //     position: absolute;
+            //     left: 35%;
+            //     font-size: 8px;
+            //     //background: #0073aa;//aliceblue;
+            //     cursor: pointer;
+            //     font-weight: 800;
+            //     top: -17px;
+            //     z-index: 99999999;
+            // }
 
             .wpup-ele-wrap {
                 position: relative;
 
                 .wpup-el-sort {
-                    padding: 11px 0 11px 0;
-                    margin: 1px;
-                }
-
-                .wpup-el-sort:hover {
-                    margin: 0px;
+                    padding: 12px 0 12px 0;
                 }
             }
         }
@@ -796,9 +790,9 @@
         .wpup-border-dashed {
             border: 1px dashed;
         }
-        .wpup-ele-wrap:hover  .wpup-update-ele {
-            display: block;
-        }
+        // .wpup-ele-wrap:hover  .wpup-update-ele {
+        //     display: block;
+        // }
 
         .wpup-multi-col {
             .wpup-label-wrap {
@@ -1074,6 +1068,39 @@
 .wpup-btn-white:focus, .wpup-btn-white:active, .wpup-btn-white:visited {
     border-color: #ccc;
 }
+
+.wpup-profile-builder {
+
+    .wpup-ele-wrap {
+
+        .wpup-update-ele {
+            display: none;
+            position: absolute;
+            left: 35%;
+            font-size: 8px;
+            //background: #0073aa;//aliceblue;
+            cursor: pointer;
+            font-weight: 800;
+            top: -17px;
+            z-index: 99999999;
+        }
+        .wpup-el-sort {
+
+            margin: 1px;
+        }
+
+        .wpup-el-sort:hover > .wpup-update-ele {
+            display: block;
+        }
+    }
+
+    .wpup-ele-wrap:hover > .wpup-el-sort {
+        border: 1px dashed #999;
+        margin: 0px;
+    }
+}
+
+
 
 
 

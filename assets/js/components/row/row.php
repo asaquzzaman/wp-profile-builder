@@ -1,7 +1,7 @@
 <div class="wpup-row-sort"> 
     <div style="height: 5px;"></div>
     <div  :class="getRowClass(row)" :data-order="index" :data-row_id="row.id">
-        <div v-if="isTemplateMode" class="wpup-update-row" @click.self.prevent="rowUpdate(row.id)">
+        <div v-if="isTemplateMode" class="wpup-update-row" @click.prevent="rowUpdate(row.id)">
             <div class="wpup-row-move-icon"><i class="wpup-row-drag fa fa-arrows-alt" aria-hidden="true"></i></div>
             <div class="wpup-row-id"><?php _e( 'Row', 'wpup' ); ?> #{{row.id}}</div>
         </div>
@@ -11,7 +11,7 @@
             :data-col_id="col.id"
             :key="col.id">
 
-            <div v-if="isTemplateMode" @click.self.prevent="columnUpdate( col, row )" class="wpup-update-col">
+            <div v-if="isTemplateMode" @click.prevent="columnUpdate( col, row )" class="wpup-update-col">
                 <!-- <i class="fa fa-pencil-square-o" aria-hidden="true"></i> -->
                 <div class="wpup-ele-edit-id"><?php _e( 'Column', 'wpup' ); ?> #{{col.id}}</div>
             </div>
