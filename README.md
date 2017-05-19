@@ -1,40 +1,45 @@
 === WP Profile Builder ===
 
 Contributors: asaquzzaman
-
-Tags: profile builder, user profile, profile, user custom field, profile maker
+Tags: profile builder, wp profile builder, wordpress profile builder, user profile, profile, user custom field, profile maker, wp profile, wordpress profile
 Requires at least: 4.0
 Tested up to: 4.7.3
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-With the WP Profile Builder plugin you can create users profile template. 
+With the WP Profile Builder plugin you can create user profile template layout. User can update and check others user profile from front-end.
 
 == Description ==
 
-With the WP Profile Builder plugin you can create users profile template.
+The WP Profile builder plugin. Manage your User Profile simply with the user tools and options. It gives you to create custom user fields. It also provide you users list page, real time search users, individual user profile and many more.
 
-[youtube https://www.youtube.com/watch?v=ZAqGxV7Y56o]
+WP profile builder plugin has two views, back-end and front-end.
 
-The WordPress Profile Builder plugin. Manage your User Profile simply with the user tools and options. It gives you to create custom user fields. It also provide you users list page, real time search users, individual user profile and many more. 
+From back-end only administrator can crate user profile template layout. After created profile template layout it will visible for all users from back-end my profile page. User can easily update their information from here. Here is also users list page. Where any user can search others user profile.
+
+From front-end user will get their individual profile with the help of the shorcode [wpup_my_profile]. User can also update their information from there. Any user can search others user profile from forn-end user lists page with the help of the shorcode [wpup_members]
 
 = Features =
 
- * **Build Profile**
-   * Create a new profile template
-   * Create user custom information field
-   * Assign the custom information fineld in the template
- * **My Profile**
-   * User individual profile page
-   * You can also update your profile information
- * **Members**
-   * Users list page
-   * Search users
-   * Check any user profile
+* **Build Profile**
+	* Create a new profile template
+	* Create user custom information field
+	* Individual information section
+	* Field drag drop facility
+* **My Profile**
+	* User individual profile page
+	* Update back-end profile information from front-end
+	* Shortcode [wpup_my_profile]
+* **Members**
+	* Users list page
+	* Search users
+	* Check any user profile
+	* Shortcode [wpup_members]
 
 = Contribute =
-This may have bugs and lack of many features. If you want to contribute on this project, you are more than welcome. Please fork the repository from [Github](https://github.com/asaquzzaman/wp-profile-builder).
+
+This may have bugs and lack of many features. If you want to contribute on this project, you are more than welcome. Please fork the repository from [Github](https://github.com/asaquzzaman/wp-user-profile-builder).
 
 == Installation ==
 
@@ -50,11 +55,13 @@ A. Only administrator can create user profile template
 
 A. Only administrator can access settings menu.
 
-= Q. Who can access profile builder users list page =
+= Q. Who can access profile builder users list page =
 
-A. All kind of users can access profile builder users list page.
+A. All kind of users can access profile builder users list page.
 
 = Q. Can user check other user's profile =
+
+A. Yes, any user can access other user's profile from users list page.
 
 == Screenshots ==
 
@@ -66,9 +73,13 @@ A. All kind of users can access profile builder users list page.
 
 == Changelog ==
 
-= 0.1 =
-Initial version released
+= 0.2 - may 20, 2017 =
 
+* [update] Change design for build profile and my profile page.
+
+= 0.1 =
+
+Initial version released
 
 == Upgrade Notice ==
 
