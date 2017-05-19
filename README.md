@@ -1,7 +1,6 @@
 === WP Profile Builder ===
 
 Contributors: asaquzzaman
-
 Tags: profile builder, wp profile builder, wordpress profile builder, user profile, profile, user custom field, profile maker, wp profile, wordpress profile
 Requires at least: 4.0
 Tested up to: 4.7.3
@@ -73,6 +72,10 @@ A. Yes, any user can access other user's profile from users list page.
 5. User profile view as other users
 
 == Changelog ==
+
+= 0.2 - may 20, 2017 =
+
+* [update] Change design for build profile and my profile page.
 
 = 0.1 =
 

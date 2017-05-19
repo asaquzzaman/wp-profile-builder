@@ -1,36 +1,40 @@
 
    <!--  <div class="wpup-create-profile"><a href="<?php echo wpup_frontend_builder_url(); ?>"><?php _e( 'Build your profile from frontend' ); ?></a></div> -->
 
-<div v-cloak id="wpup-user-profile"   class="<?php echo is_admin() ? 'wpup-user-profile-admin' : 'wpup-user-profile-frontend'; ?>">
+<div v-cloak id="wpup-user-profile"   class="wpup-profile-builder <?php echo is_admin() ? 'wpup-user-profile-admin' : 'wpup-user-profile-frontend'; ?>">
     
     <div class="wpup-content-wrap">
         <div :style="contentWidth">
-            <?php if ( ! is_admin() ) { ?>
-                <a v-if="is_user_admin" @click.prevent="updateTemplate()" href="#">Settings</a>&nbsp; &nbsp;&nbsp;&nbsp;
-            <?php } ?>
-            <a v-if="is_user_admin" @click.prevent="templateMode()" href="#">View as Profile mode</a>&nbsp; &nbsp;&nbsp;&nbsp;
+            <div class="wpup-profile-builder-btn-wrap">
+                <?php if ( ! is_admin() ) { ?>
+                    <a  v-if="is_user_admin" @click.prevent="updateTemplate()" href="#">Settings</a>&nbsp; &nbsp;&nbsp;&nbsp;
+                <?php } ?>
+                <a class="wpup-btn-white" v-if="is_user_admin" @click.prevent="templateMode()" href="#">View as Profile mode</a>&nbsp;
 
-            <a v-if="userCanUpdateProfile" @click.prevent="profileUpdateMode()" href="#">View as profile update mode</a>
+                <a class="wpup-btn-white" v-if="userCanUpdateProfile" @click.prevent="profileUpdateMode()" href="#">View as profile update mode</a>
+            </div>
             <form action="">
-                <wpup-profile-header></wpup-profile-header>
-                
-                <div id="wpup-profile-content-wrap">
+                <div class="wpup-profile-wrap">
+                    <wpup-profile-header></wpup-profile-header>
                     
-                        <div v-wpup-row-sortable  id="wpup-drop-zone" :style="dropZon()">
-                            
-                            <wpup-row 
-                                v-for="( row, index ) in rows"  
-                                :row="row" 
-                                :els="els" 
-                                :rows="rows" 
-                                :cols="cols"
-                                :key="row.id"
-                                :index="index">
+                    <div id="wpup-profile-content-wrap">
                         
-                            </wpup-row>
-                        </div> 
+                            <div v-wpup-row-sortable  id="wpup-drop-zone" :style="dropZon()">
+                                
+                                <wpup-row 
+                                    v-for="( row, index ) in rows"  
+                                    :row="row" 
+                                    :els="els" 
+                                    :rows="rows" 
+                                    :cols="cols"
+                                    :key="row.id"
+                                    :index="index">
+                            
+                                </wpup-row>
+                            </div> 
 
-                        <div v-if="wpup_drop_here" class="wpup-drop-here"><?php _e( 'Drop your contenet with new row', 'wpup' ); ?></div>  
+                            <div v-if="wpup_drop_here" class="wpup-drop-here"><?php _e( 'Drop your contenet with new row', 'wpup' ); ?></div>  
+                    </div>
                 </div>
             </form>
         </div>

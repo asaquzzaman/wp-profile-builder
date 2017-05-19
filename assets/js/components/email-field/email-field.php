@@ -1,10 +1,10 @@
 <div class="wpup-el-sort"> 
 
-    <div v-if="isTemplateMode" @click.self.prevent="elementUpdate( row, col, ele)" class="wpup-update-ele">
-        <i class="wpup-ele-drag fa fa-arrows-alt" aria-hidden="true"></i>
-        <?php _e( 'Element', 'wpup' ); ?> #{{ele.id}}
+    <div v-if="isTemplateMode" @click.prevent="elementUpdate( row, col, ele)" class="wpup-update-ele">
+        <div class="wpup-row-move-icon"><i class="wpup-ele-drag fa fa-arrows-alt" aria-hidden="true"></i></div>
+        <div class="wpup-row-id wpup-clearfix"><?php _e( 'Element', 'wpup' ); ?> #{{ele.id}}</div>
     </div>
-    <div class="wpup-label-wrap">
+    <div class="wpup-label-wrap wpup-clearfix">
         
         <label class="wpup-label">{{ele.ele_settings_field_val.label}}</label>
         
@@ -21,7 +21,7 @@
         
         <div v-if="isUpdateMode" class="wpup-label-content wpup-clearfix">
             <input :required="ele.required" class="wpup-update-individual-field" :disabled="ele.ele_settings_field_val.disabled" :name="ele.ele_settings_field_val.name" v-model="ele.field_val" :placeholder="ele.ele_settings_field_val.placeholder" type="email">
-            <div v-if="ele.ele_settings_field.description">{{ ele.ele_settings_field_val.description }}</div>
+            <div class="wpup-help-text" v-if="ele.ele_settings_field_val.description != ''">{{ ele.ele_settings_field_val.description }}</div>
         </div>
     </div>
 </div>

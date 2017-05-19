@@ -153,7 +153,8 @@
 }
 
 .wpup-update-individual-field, .wpup-header-input-field {
-    border: 1px solid #ccc;
+    border: 1px solid #ddd !important;
+    background: #f9f9f9 !important;
     border-radius: 3px;
     font-family: inherit;
     padding: 6px;
@@ -184,10 +185,10 @@
    // box-shadow: 0 0 1px rgba(0,0,0,.5);
     overflow: hidden;
     text-align: center;
-    border-top: 1px solid #eee;
-    border-left: 1px solid #eee;
-    border-right: 1px solid #eee;
-    border-bottom: 1px solid #eee;
+    //border-top: 1px solid #eee;
+    //border-left: 1px solid #eee;
+    //border-right: 1px solid #eee;
+    //border-bottom: 1px solid #eee;
     font-size: 12px;
 
     input {
@@ -329,6 +330,10 @@
         .wpup-header-update-field-label {
             width: 35%;
             margin-left: 10px;
+            color: #444;
+            font-size: 12px;
+            font-weight: bold;
+            font-family: Arial, Helvetica, sans-serif;
         }
         .wpup-header-input-field, .wpup-header-update-field-label {
             float: left;
@@ -487,6 +492,7 @@
                         list-style: none;
                         font-size: 12px;
                         width: 30%;
+                        border: 1px solid #eee;
                     }
                     .wpup-width-field-wrap {
                         margin: 0;
@@ -542,6 +548,7 @@
                         cursor: pointer;
                         display: inline-block;
                         padding: 0;
+
                         a {
                             padding: 10px;
                             width: 100%;
@@ -620,11 +627,12 @@
         }
 
         .wpup-section {
-            padding: 4px 8px;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.15);
-            background: #eee;
+            padding: 6px 6px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            background: #767676;
             border-radius: 3px;
             font-size: 13px;
+            color: #fff;
         }
 
         .wpup-drop-messsage {
@@ -634,8 +642,8 @@
 
         .wpup-row {
             position: relative;
-            border: 1px solid #eee;
-            margin-top: 10px;
+            border-top: 1px solid #eee;
+            //margin-top: 10px;
             //.wpup-col-wrap:nth-child(even)
             .wpup-col-wrap {
                 padding: 5px;
@@ -656,12 +664,24 @@
                     word-wrap: break-word;
                     color: #444;
                     font-size: 12px;
+                    font-weight: bold;
+                    font-family: Arial, Helvetica, sans-serif;
                 }
                 .wpup-label-content {
                     width: 60%;
                     word-wrap: break-word;
-                    color: #999;
+                    color: #6f6f6f;
                     font-size: 12px;
+                    font-family: inherit;
+                }
+
+                .wpup-help-text {
+                    margin: 5px 0 0 0;
+                    font-size: 12px;
+                    font-style: italic;
+                    padding: 5px 8px;
+                    border: #cee1ef 1px solid;
+                    background-color: #f0f8ff;
                 }
             }
 
@@ -680,15 +700,42 @@
                 }
             }
 
+            .wpup-update-row, .wpup-update-col, .wpup-update-ele {
+                background: #afd23e;
+                letter-spacing: 1px;
+                color: #fff;
+                z-index: 9999;
+                padding: 0px 5px 0px 0px;
+
+                .wpup-row-move-icon, .wpup-ele-move-icon {
+                    width: 12px;
+                    display: inline-block;
+                    cursor: move;
+                    margin: 0;
+                    padding: 0px;
+                    text-align: center;
+                    padding: 0 12px 0 5px;
+                }
+
+                .wpup-row-move-icon:hover,  .wpup-ele-move-icon:hover {
+                    background: #3f94bd;
+                }
+
+                .wpup-row-id, .wpup-ele-id {
+                    display: inline-block;
+                }
+                .wpup-ele-edit-id {
+                    padding: 0 0px 0 5px;
+                }
+            }
 
             .wpup-update-row {
                 display: none;
                 position: absolute;
                 top: -18px;
-                z-index: 99999;
                 font-size: 8px;
-                background: aliceblue;
-                padding: 0px 5px 0px 5px;
+                //background: #0073aa; //aliceblue;
+                
                 margin-left: -1px;
                 cursor: pointer;
                 font-weight: 800;
@@ -698,32 +745,31 @@
                 display: none;
                 position: absolute;
                 top: -18px;
-                z-index: 99999;
                 font-size: 8px;
-                background: aliceblue;
-                padding: 0px 5px 0px 5px;
+                //background: #0073aa; //aliceblue;
                 right: -1px;
                 font-weight: 800;
                 cursor: pointer;
             }
 
-            .wpup-update-ele {
-                display: none;
-                position: absolute;
-                left: 35%;
-                z-index: 99999;
-                font-size: 8px;
-                background: aliceblue;
-                padding: 0px 5px 0px 5px;
-                cursor: pointer;
-                font-weight: 800;
-                top: -8px;
-            }
+            // .wpup-update-ele {
+            //     display: none;
+            //     position: absolute;
+            //     left: 35%;
+            //     font-size: 8px;
+            //     //background: #0073aa;//aliceblue;
+            //     cursor: pointer;
+            //     font-weight: 800;
+            //     top: -17px;
+            //     z-index: 99999999;
+            // }
 
             .wpup-ele-wrap {
                 position: relative;
-                padding-top: 15px;
-                padding-bottom: 15px;
+
+                .wpup-el-sort {
+                    padding: 12px 0 12px 0;
+                }
             }
         }
 
@@ -744,14 +790,14 @@
         .wpup-border-dashed {
             border: 1px dashed;
         }
-        .wpup-ele-wrap:hover  .wpup-update-ele {
-            display: block;
-        }
+        // .wpup-ele-wrap:hover  .wpup-update-ele {
+        //     display: block;
+        // }
 
         .wpup-multi-col {
             .wpup-label-wrap {
                 .wpup-label, .wpup-label-content {
-                    width: 100%;
+                    width: 95%;
                     display: inline-block;
                 }
             }
@@ -997,6 +1043,64 @@
         margin: 0 auto;
     }
 }
+
+.wpup-profile-wrap {
+    border: 1px solid #eee;
+}
+.wpup-btn-white {
+    text-align: center;
+    text-decoration: none;
+    background: #f7f7f7;
+    color: #0073aa;
+    padding: 4px 8px;
+    display: inline-block;
+    border-radius: 2px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+}
+
+.wpup-btn-white:hover {
+    border-color: #008EC2;
+    background: #00a0d2;
+    color: #fff;
+}
+
+.wpup-btn-white:focus, .wpup-btn-white:active, .wpup-btn-white:visited {
+    border-color: #ccc;
+}
+
+.wpup-profile-builder {
+
+    .wpup-ele-wrap {
+
+        .wpup-update-ele {
+            display: none;
+            position: absolute;
+            left: 35%;
+            font-size: 8px;
+            //background: #0073aa;//aliceblue;
+            cursor: pointer;
+            font-weight: 800;
+            top: -17px;
+            z-index: 99999999;
+        }
+        .wpup-el-sort {
+
+            margin: 1px;
+        }
+
+        .wpup-el-sort:hover > .wpup-update-ele {
+            display: block;
+        }
+    }
+
+    .wpup-ele-wrap:hover > .wpup-el-sort {
+        border: 1px dashed #999;
+        margin: 0px;
+    }
+}
+
+
 
 
 
