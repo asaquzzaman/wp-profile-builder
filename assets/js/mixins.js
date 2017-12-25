@@ -147,6 +147,7 @@ var WPUP_Profile_Builder = {
             animation: 550,
             draggable: '.wpup-field-btn',
             sort: false,
+
            
             onRemove: function (evt) { 
                 

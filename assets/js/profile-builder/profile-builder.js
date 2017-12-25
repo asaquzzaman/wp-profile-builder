@@ -149,9 +149,8 @@
 
         settingsContent: function(el) {
             Sortable.create( el, {
-                group: { name: "settings_content", pull: ['clone'] },
+                group: { name: "settings_content", pull:'clone', put:false },
                 animation: 550,
-                draggable: '.wpup-field-btn',
                 sort: false,
                
                 onRemove: function (evt) { 
@@ -432,7 +431,7 @@
                         visibility: true,
                         type: type,
                         label: 'Label',
-                        content: 'Label Content',
+                        content: 'Content',
                         field_val: '',
                         group_type: false,
                         group_key: false,
@@ -440,7 +439,7 @@
                         //Default value for element settings
                         ele_settings_field_val: {
                             label: 'label',
-                            content: 'Label Content',
+                            content: 'Content',
                             name: 'wpup_label_'+id,
                             placeholder: '',
                             description: '',

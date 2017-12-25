@@ -85,7 +85,7 @@
                                 </div>
                                 
                                 <div v-if="settings_fld_opt.content">
-                                    <label><?php _e( 'Label Content', 'wpup' ); ?></label>
+                                    <label><?php _e( 'Content', 'wpup' ); ?></label>
                                     <textarea v-model="settings_fld_val.content"></textarea>
                                 </div>
                                 
