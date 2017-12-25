@@ -3,7 +3,7 @@
  * Plugin Name: WP Profile Builder 
  * Plugin URI: https://github.com/asaquzzaman/wp-user-profile-builder
  * Description: With the Profile plugin you can create users profile template layout. 
- * Version: 0.2
+ * Version: 0.3
  * Author: asaquzzaman
  * Author URI: http://mishubd.com
  * Requires at least: 4.0
@@ -102,7 +102,7 @@ final class UserProfile {
      * @return void
      */
     private function define_constants() {
-        $this->define( 'WPUP_VERSION', '0.2' );
+        $this->define( 'WPUP_VERSION', '0.3' );
         $this->define( 'WPUP_DB_VERSION', '0.1' );
         $this->define( 'WPUP_PATH', dirname( __FILE__ ) );
         $this->define( 'WPUP_URL', plugins_url( '', __FILE__ ) );
