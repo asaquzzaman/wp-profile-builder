@@ -54,7 +54,7 @@
 			}
 		},
 		created () {
-			$this.registerStore();
+			this.registerModule();
 		},
 		methods: {
 			registerModule () {

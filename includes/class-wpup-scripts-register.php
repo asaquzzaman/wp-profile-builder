@@ -66,7 +66,7 @@ class WPUP_Scripts_Register {
 			'basename' 	=> basename( dirname( dirname( __FILE__ ) ) )
         ));
 
-        wp_register_script( 'wpup-bootstrap', WPUP_URL . '/views/assets/vendor/bootstrap.js', array(), self::$version, false );
+        wp_register_script( 'wpup-bootstrap', WPUP_URL . '/views/assets/vendor/bootstrap.js', array(), self::$version );
    
    		wp_register_script( 'wpup-mixins', WPUP_URL . '/assets/js/mixins' . self::$suffix . '.js', array( 'jquery' ), self::$version, true );
 

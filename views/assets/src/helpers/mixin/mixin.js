@@ -73,8 +73,7 @@ export default {
         },
         dropZon: function() {
             var style = {};
-
-            if ( this.$store.state.rows.length ) {
+            if ( this.$store.state.profileBuilder.rows.length ) {
                 style = {
                     border : 'none'
                 }

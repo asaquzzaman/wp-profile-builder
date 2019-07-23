@@ -41,7 +41,7 @@ function wpSpearWPUPRegisterModule(module, path) {
 	);
 }
 
-function wpSpearWPUPRegisterModule(module, path) {
+function wpSpearWPUPProRegisterModule(module, path) {
 	wpSpearWPUPProModules.push(
 		{
 			'name': module,
