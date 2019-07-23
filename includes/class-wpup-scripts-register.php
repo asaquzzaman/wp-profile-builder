@@ -56,7 +56,17 @@ class WPUP_Scripts_Register {
         wp_localize_script( 'wpup-main', 'wpup', array(
 			'nonce'   => wp_create_nonce( 'wpup-nonce' ),
 			'ajaxurl' => admin_url( 'admin-ajax.php' ),
+			'url'     => plugin_dir_url( dirname( __FILE__ ) ),
+			'suffix'     => defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min',
+			'patch'      => dirname( dirname( __FILE__ ) ),
+			'view_path'  => dirname( dirname( __FILE__ ) ) . '/views',
+			'url'        => plugin_dir_url( dirname( __FILE__ ) ),
+			'assets_url' => plugin_dir_url( dirname( __FILE__ ) ) . 'views/assets/',
+			'path'       => plugin_dir_path( __FILE__ ),
+			'basename' 	=> basename( dirname( dirname( __FILE__ ) ) )
         ));
+
+        wp_register_script( 'wpup-bootstrap', WPUP_URL . '/views/assets/vendor/bootstrap.js', array(), self::$version, false );
    
    		wp_register_script( 'wpup-mixins', WPUP_URL . '/assets/js/mixins' . self::$suffix . '.js', array( 'jquery' ), self::$version, true );
 
@@ -162,6 +172,8 @@ class WPUP_Scripts_Register {
 			'wpup-url-field',
 			'wpup-date-field', 
 		), self::$version, true );
+
+		wp_register_script( 'wpup-app', WPUP_URL . '/views/assets/js/app.js', array(), self::$version, true );
 	}
 
 	/**

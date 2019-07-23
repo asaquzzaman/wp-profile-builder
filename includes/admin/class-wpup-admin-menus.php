@@ -88,7 +88,8 @@ class Admin_Menu {
      * @return void
      */
     function user_profile_page() {
-        WPUP_Admin_Form_Builder::output();
+        require_once WPUP_PATH . '/views/index.html';
+        //WPUP_Admin_Form_Builder::output();
     }
 
     /**

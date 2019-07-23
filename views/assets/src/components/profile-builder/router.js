@@ -1,0 +1,1 @@
+wpSpearWPUPRegisterModule('profileBuilder', 'profile-builder');

@@ -1,6 +1,3 @@
-
-   <!--  <div class="wpup-create-profile"><a href="<?php echo wpup_frontend_builder_url(); ?>"><?php _e( 'Build your profile from frontend' ); ?></a></div> -->
-
 <div v-cloak id="wpup-user-profile"   class="wpup-profile-builder <?php echo is_admin() ? 'wpup-user-profile-admin' : 'wpup-user-profile-frontend'; ?>">
     
     <div class="wpup-content-wrap">

@@ -58,7 +58,7 @@ class WPUP_Frontend_Scripts {
 		$time_zone_string      = file_get_contents( WPUP_URL . '/assets/js/moment/latest.json' );
         $json_time_zone_string = json_decode($time_zone_string, true);
         $current_user          = get_user_by( 'id', wpup_get_user_id() );
-
+        wp_enqueue_script( 'wpup-bootstrap' );
 		wp_enqueue_media();
 		wp_enqueue_script( 'jquery' );
         wp_enqueue_script( 'jquery-ui-datepicker' );
@@ -87,6 +87,7 @@ class WPUP_Frontend_Scripts {
 			'profile_details'              => wpup_default_profile_details(),
 			'social_profile'               => wpup_social_profile(),
 			'is_user_admin'                => is_current_user_admin(),
+			'is_admin'                     => is_admin(),
 			'user_can_update_profile'      => wpup_user_can_update_profile(),
 			'wp_date_format'               => get_option( 'date_format' ),
 			'wp_time_format'               => get_option( 'time_format' ),
@@ -109,7 +110,9 @@ class WPUP_Frontend_Scripts {
                 'filters'             => array( array( 'title' => __( 'Allowed Files' ), 'extensions' => '*' ) ),
                 'resize'              => array( 'width' => ( int ) get_option( 'large_size_w' ), 'height' => ( int ) get_option( 'large_size_h' ), 'quality' => 100 )
             )
-        ));
+        )); 
+
+        wp_enqueue_script( 'wpup-app' );
 
 		wp_enqueue_style( 'wpup-toastr' );
         wp_enqueue_style( 'wpup-jquery-ui-custom-css' );
@@ -133,6 +136,8 @@ class WPUP_Frontend_Scripts {
 		$time_zone_string      = file_get_contents( WPUP_URL . '/assets/js/moment/latest.json' );
         $json_time_zone_string = json_decode($time_zone_string, true);
         $current_user          = get_user_by( 'id', wpup_get_user_id() );
+
+        wp_enqueue_script( 'wpup-bootstrap' );
 
 		wp_enqueue_media();
 		wp_enqueue_script( 'plupload-handlers' );
@@ -160,6 +165,8 @@ class WPUP_Frontend_Scripts {
 			
         ));
 
+        wp_enqueue_script( 'wpup-app' );
+
         wp_enqueue_style( 'wpup-toastr' );
         wp_enqueue_style( 'wpup-jquery-ui-custom-css' );
 		wp_enqueue_style( 'wpup-front-end-style' );
@@ -186,7 +193,8 @@ class WPUP_Frontend_Scripts {
 		$time_zone_string      = file_get_contents( WPUP_URL . '/assets/js/moment/latest.json' );
         $json_time_zone_string = json_decode($time_zone_string, true);
         $current_user          = get_user_by( 'id', wpup_get_user_id() );
-
+        wp_enqueue_script( 'wpup-bootstrap' );
+        
 		wp_enqueue_media();
         wp_enqueue_script( 'jquery-ui-datepicker' );
         wp_enqueue_script( 'plupload-handlers' );
@@ -231,6 +239,8 @@ class WPUP_Frontend_Scripts {
                 'resize'              => array( 'width' => ( int ) get_option( 'large_size_w' ), 'height' => ( int ) get_option( 'large_size_h' ), 'quality' => 100 )
             )
         ));
+
+        wp_enqueue_script( 'wpup-app' );
 
 		wp_enqueue_style( 'wpup-toastr' );
         wp_enqueue_style( 'wpup-jquery-ui-custom-css' );

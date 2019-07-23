@@ -293,7 +293,7 @@
         },
     });
     
-    var WPUP_Profile = new Vue({
+    export default {
         store: WPUP_Profile_Builder_Store,
 
         mixins: [WPUP_Mixins, WPUP_Profile_Builder_Mixins],
@@ -833,7 +833,7 @@
 
         },
 
-    }).$mount("#wpup-user-profile");
+    };
 
 
 
