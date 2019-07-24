@@ -26,7 +26,7 @@ function wpSpearWPUPGetRegisterChildrenRoute(parentRouteName, prevRoute) {
 	var prevRoute = prevRoute || [];
 
 	if (wpSpearWPUPChildrenRouter.hasOwnProperty(parentRouteName)  ) {
-		return prevRoute.concat(wpSpearwpupChildrenRouter[parentRouteName]);
+		return prevRoute.concat(wpSpearWPUPChildrenRouter[parentRouteName]);
 	}
 
 	return prevRoute;

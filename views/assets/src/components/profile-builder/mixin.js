@@ -2,61 +2,61 @@ export default{
 
     computed: {
         is_user_admin: function() {
-            return this.$store.state.is_user_admin;
+            return this.$store.state.profileBuilder.is_user_admin;
         },
 
         wpup_drop_here: function() {
-            return this.$store.state.rows.length ? false : true;
+            return this.$store.state.profileBuilder.rows.length ? false : true;
         },
 
         selected_header: function() {
-            return this.$store.state.selected_header;
+            return this.$store.state.profileBuilder.selected_header;
         },
 
         header_config: function() {
-            return this.$store.state.header_config;
+            return this.$store.state.profileBuilder.header_config;
         },
 
         header: function() {
-            return this.$store.state.header;
+            return this.$store.state.profileBuilder.header;
         },
 
         view_settings_panel: function() {
-            return this.$store.state.view_settings_panel;
+            return this.$store.state.profileBuilder.view_settings_panel;
         },
 
         profile_id: function() {
-            return this.$store.state.profile_id;
+            return this.$store.state.profileBuilder.profile_id;
         },
 
         social_profile: function() {
-            return this.$store.state.social_profile;
+            return this.$store.state.profileBuilder.social_profile;
         },
 
         isUpdateMode: function() {
-            return this.$store.state.is_update_mode;
+            return this.$store.state.profileBuilder.is_update_mode;
         },
 
         contentWidth: function() {
-            var unit = this.$store.state.content_width_unit == '=' ? 'px' : '%';
+            var unit = this.$store.state.profileBuilder.content_width_unit == '=' ? 'px' : '%';
             return {
-                width: this.$store.state.content_width + unit
+                width: this.$store.state.profileBuilder.content_width + unit
             }
         },
 
         rows: function() {
-            return this.$store.state.rows;
+            return this.$store.state.profileBuilder.rows;
         },
 
         cols: function() {
-            return this.$store.state.cols;
+            return this.$store.state.profileBuilder.cols;
         },
 
         els: function() {
-            return this.$store.state.els;
+            return this.$store.state.profileBuilder.els;
         },
         userCanUpdateProfile: function() {
-            return this.$store.state.userCanUpdateProfile;
+            return this.$store.state.profileBuilder.userCanUpdateProfile;
         }
 
     },
@@ -89,7 +89,7 @@ export default{
                 col_index,
                 col_ele_index;
 
-            this.$store.state.cols.map(function(col, index) {
+            this.$store.state.profileBuilder.cols.map(function(col, index) {
                 var is_ele = col.els.indexOf(ele_id);
                 
                 if ( is_ele != '-1' ) {
@@ -101,7 +101,7 @@ export default{
 
             var target_col = col_index,
                 index = col_ele_index,
-                ele_index = this.$store.state.els.wpupfilter(this.ele_id);
+                ele_index = this.$store.state.profileBuilder.els.wpupfilter(this.ele_id);
                 
             this.$store.commit('removeEleFromCol', {col_index: target_col, ele_index: index});
             //this.cols[target_col].els.splice( index, 1 );
