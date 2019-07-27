@@ -4,11 +4,11 @@
         <div id="wpup-settings-panel-wrap">
             <form action="" v-on:submit.prevent="settingsSave()">
                 <div id="wpup-settings-header" @mouseover.prevent="settingsPanelMove" @mouseleave.prevent="settingsPanelMoveStop">
-                    <?php _e( 'Settings', 'wpup' ); ?>
+                    Settings
                    
-                    <?php if ( ! is_admin() ) { ?>
-                        <i @click.prevent="closeSettingsPanel()" class="fa fa-times" aria-hidden="true"></i>
-                    <?php } ?>
+                    
+                    <i v-if="!parseInt(is_admin)" @click.prevent="closeSettingsPanel()" class="fa fa-times" aria-hidden="true"></i>
+                    
 
                 </div>
 
@@ -19,12 +19,12 @@
 
                         <li class="wpup-settings-child" v-show="header_settings">
                             <div  class="wpup-settings-title">
-                                <a class="wpup-settings-section-title"  href="#"><?php _e( 'Header Content', 'wpup'); ?></a>
+                                <a class="wpup-settings-section-title"  href="#">Header Content</a>
                             </div>
                             <!-- v-wpup-draggable:dropZone -->
                             <div class="wpup-header-field-wrap">
                                 <div>
-                                    <label><?php _e( 'Title', 'wpup' ); ?></label>
+                                    <label>Title</label>
                                     <input v-model="header_title" type="text">
                                 </div>
 
@@ -35,13 +35,13 @@
                             <div @click.self.prevent="settingsTabFields('row_settings')" class="wpup-settings-title">
                                 <i @click.self.prevent="settingsTabFields('row_settings')" v-show="! row_settings" class="fa wpup-i-float fa-plus-circle" aria-hidden="true"></i>
                                 <i @click.self.prevent="settingsTabFields('row_settings')" v-show="row_settings" class="fa wpup-i-float fa-minus-circle" aria-hidden="true"></i>
-                                <a class="wpup-settings-section-title" @click.self.prevent="settingsTabFields('row_settings')" href="#"><?php _e( 'Row', 'wpup' ); ?> #{{row_id}}</a>
+                                <a class="wpup-settings-section-title" @click.self.prevent="settingsTabFields('row_settings')" href="#">Row #{{row_id}}</a>
                             </div>
 
                             <div class="wpup-settings-btn-wrap" v-show="row_settings">
                                 <ul class="wpup-update-row">
-                                    <li class="wpup-field-col" data-type="new_col" data-span="1"><a @click.self.prevent="newCol" href="#"><?php _e( 'Add New Column', 'wpup' ); ?></a></li>
-                                    <li class="wpup-field-col" data-type="new_col" data-span="1"><a @click.self.prevent="removeRow()" href="#"><?php _e( 'Remove Row', 'wpup' ); ?></a></li>
+                                    <li class="wpup-field-col" data-type="new_col" data-span="1"><a @click.self.prevent="newCol" href="#">Add New Column</a></li>
+                                    <li class="wpup-field-col" data-type="new_col" data-span="1"><a @click.self.prevent="removeRow()" href="#">Remove Row</a></li>
                                 </ul>
                             </div>
                         </li>
@@ -50,12 +50,12 @@
                             <div @click.self.prevent="settingsTabFields('col_settings')" class="wpup-settings-title">
                                 <i @click.self.prevent="settingsTabFields('col_settings')" v-show="! col_settings" class="fa wpup-i-float fa-plus-circle" aria-hidden="true"></i>
                                 <i @click.self.prevent="settingsTabFields('col_settings')" v-show="col_settings" class="fa wpup-i-float fa-minus-circle" aria-hidden="true"></i>
-                                <a class="wpup-settings-section-title" @click.self.prevent="settingsTabFields('col_settings')" href="#"><?php _e( 'Column', 'wpup' ); ?>  #{{col_id}}</a>
+                                <a class="wpup-settings-section-title" @click.self.prevent="settingsTabFields('col_settings')" href="#">Column  #{{col_id}}</a>
                             </div>
 
                             <div class="wpup-settings-btn-wrap" v-show="col_settings">
                                 <ul class="wpup-new-col">
-                                    <li  class="wpup-field-col" data-span="4"><a @click.self.prevent="removeCol()" href="#"><?php _e( 'Remove' ); ?></a></li>
+                                    <li  class="wpup-field-col" data-span="4"><a @click.self.prevent="removeCol()" href="#">Remove></a></li>
                                 </ul>
                             </div>
                         </li>
@@ -64,49 +64,49 @@
                             <div @click.self.prevent="settingsTabFields('ele_settings')" class="wpup-settings-title">
                                 <i @click.self.prevent="settingsTabFields('ele_settings')" v-show="! ele_settings" class="fa wpup-i-float fa-plus-circle" aria-hidden="true"></i>
                                 <i @click.self.prevent="settingsTabFields('ele_settings')" v-show="ele_settings" class="fa wpup-i-float fa-minus-circle" aria-hidden="true"></i>
-                                <a class="wpup-settings-section-title" @click.self.prevent="settingsTabFields('ele_settings')" href="#"><?php _e( 'Element', 'wpup' ); ?> #{{ele_id}}</a>
+                                <a class="wpup-settings-section-title" @click.self.prevent="settingsTabFields('ele_settings')" href="#">Element #{{ele_id}}</a>
                             </div>
 
                             <div class="wpup-settings-btn-wrap" v-show="ele_settings">
                                 <ul class="wpup-new-ele">
 
-                                    <li class="wpup-field-col" data-span="4"><a @click.self.prevent="removeEle()" href="#"><?php _e( 'Remove' ); ?></a></li>
+                                    <li class="wpup-field-col" data-span="4"><a @click.self.prevent="removeEle()" href="#">Remove></a></li>
 
                                 </ul>
 
                                 <div class="wpup-element-fields">
                                     <div v-if="settings_fld_opt.label">
-                                        <label><?php _e( 'Label', 'wpup' ); ?></label>
+                                        <label>Label</label>
                                         <input type="text" @blur.prevent="setFieldName" v-model="settings_fld_val.label">
                                     </div>
                                     
                                     <div v-if="settings_fld_opt.url">
-                                        <label><?php _e( 'Profile Link (URL)', 'wpup' ); ?></label>
+                                        <label>Profile Link (URL)</label>
                                         <input type="text" v-model="settings_fld_val.url">
                                     </div>
                                     
                                     <div v-if="settings_fld_opt.content">
-                                        <label><?php _e( 'Content', 'wpup' ); ?></label>
+                                        <label>Content</label>
                                         <textarea v-model="settings_fld_val.content"></textarea>
                                     </div>
                                     
                                     <div v-if="settings_fld_opt.name">
-                                        <label><?php _e( 'Name', 'wpup' ); ?></label>
+                                        <label>Name</label>
                                         <input v-model="settings_fld_val.name" type="text">
                                     </div>
 
                                     <div v-if="settings_fld_opt.placeholder">
-                                        <label><?php _e( 'Placeholder', 'wpup' ); ?></label>
+                                        <label>Placeholder</label>
                                         <input v-model="settings_fld_val.placeholder" type="text">
                                     </div>
 
                                     <div v-if="settings_fld_opt.description">
-                                        <label><?php _e( 'Description', 'wpup' ); ?></label>
+                                        <label>Description</label>
                                         <input v-model="settings_fld_val.description" type="text">
                                     </div>
 
                                     <div v-if="settings_fld_opt.disabled">
-                                        <label><?php _e( 'Disabled', 'wpup' ); ?></label>
+                                        <label>Disabled</label>
                                         <input class="wpup-checkbox-field" v-model="settings_fld_val.disabled" type="checkbox">
                                     </div>
                                 </div>
@@ -117,7 +117,7 @@
                             <div @click.self.prevent="settingsTabFields('field')" class="wpup-settings-title">
                                 <i @click.self.prevent="settingsTabFields('field')" v-show="! field" class="fa wpup-i-float fa-plus-circle" aria-hidden="true"></i>
                                 <i @click.self.prevent="settingsTabFields('field')" v-show="field" class="fa wpup-i-float fa-minus-circle" aria-hidden="true"></i>
-                                <a class="wpup-settings-section-title" @click.self.prevent="settingsTabFields('field')" href="#"><?php _e( 'Fields', 'wpup'); ?></a>
+                                <a class="wpup-settings-section-title" @click.self.prevent="settingsTabFields('field')" href="#">Fields</a>
                             </div>
                             <!-- v-wpup-draggable:dropZone -->
                             <div class="wpup-settings-btn-wrap" v-show="field">
@@ -127,7 +127,7 @@
                                         <div class="wpup-settings-btn-wrap">
                                             
                                             <div class="wpup-content-width-field">
-                                                <label><?php _e( 'Content Width', 'wpup' ); ?></label>
+                                                <label>Content Width</label>
                                                 <input class="wpup-width-field" v-model="content_width" type="number">
                                             </div>
                                             <div class="wpup-content-width-unit">
@@ -140,19 +140,19 @@
                                             
                                         </div>
                                     </li>
-                                    <li  class="wpup-field-btn" data-type="section_field"><?php _e( 'Section', 'wpup' ); ?></li>
-                                    <li  class="wpup-field-btn" data-type="profile_field"><?php _e( 'Details', 'wpup' ); ?></li>
-                                    <li  class="wpup-field-btn" data-type="social_field"><?php _e( 'Social', 'wpup'); ?></li>
-                                    <li  class="wpup-field-btn" data-type="text_field"><?php _e( 'text', 'wpup'); ?></li>
-                                    <li  class="wpup-field-btn" data-type="url_field"><?php _e( 'URL', 'wpup'); ?></li>
-                                    <li  class="wpup-field-btn" data-type="date_field"><?php _e( 'Date', 'wpup'); ?></li>
+                                    <li  class="wpup-field-btn" data-type="section_field">Section</li>
+                                    <li  class="wpup-field-btn" data-type="profile_field">Details</li>
+                                    <li  class="wpup-field-btn" data-type="social_field">Social</li>
+                                    <li  class="wpup-field-btn" data-type="text_field">text</li>
+                                    <li  class="wpup-field-btn" data-type="url_field">URL</li>
+                                    <li  class="wpup-field-btn" data-type="date_field">Date</li>
                                 </ul>
                             </div>
                         </li>
                     </ul>
                 </div>
 
-                <input type="submit" :disabled="submit_disabled" value="<?php _e( 'Save Changes', 'wpup' ); ?>" class="wpup-settings-submit">
+                <input type="submit" :disabled="submit_disabled" value="Save Changes" class="wpup-settings-submit">
             </form>
         </div>
     </div>
@@ -163,7 +163,7 @@
         props: ['view_settings_panel', 'header_settings', 'header', 'selected_header'],
 
         created: function() {
-           this.$root.$on( 'wpup_profile_builders_hook', this.getHook );
+           wpupBus.$on( 'wpup_profile_builders_hook', this.getHook );
         },
 
         data: function() {
@@ -184,22 +184,22 @@
                 submit_disabled: false,
                 show_spinner: false,
                 profile_id: false,
-                content_width: (typeof this.$store.state.content_width == 'undefined') ? 600 : this.$store.state.content_width,
-                content_width_unit: (typeof this.$store.state.content_width_unit == 'undefined') ? '=' : this.$store.state.content_width_unit,
+                content_width: (typeof this.$store.state.profileBuilder.content_width == 'undefined') ? 600 : this.$store.state.profileBuilder.content_width,
+                content_width_unit: (typeof this.$store.state.profileBuilder.content_width_unit == 'undefined') ? '=' : this.$store.state.profileBuilder.content_width_unit,
                 header_birth_day: '',
-                // els: this.$store.state.els,
-                // cols: this.$store.state.cols,
-                // rows: this.$store.state.rows
+                // els: this.$store.state.profileBuilder.els,
+                // cols: this.$store.state.profileBuilder.cols,
+                // rows: this.$store.state.profileBuilder.rows
             }
         },
 
         watch: {
             content_width: function( new_val ) {
-                this.$store.commit('content_width', { content_width: new_val });
+                this.$store.commit('profileBuilder/content_width', { content_width: new_val });
 
             },
             content_width_unit: function( new_val ) {
-                this.$store.commit('content_width_unit', { content_width_unit: new_val });
+                this.$store.commit('profileBuilder/content_width_unit', { content_width_unit: new_val });
             },
 
             selected_header: function(new_val) {
@@ -241,7 +241,7 @@
 
         methods: {
             //Get all hook and seperate them by id
-            getHook: function(id, data, e) {
+            getHook: function(id, data ) {
                 switch( id ) {
                     case "updateRow":
                         this.header_settings = false;
@@ -320,7 +320,7 @@
             //Close settings popup
             closeSettingsPanel: function() {
                 //this.setHook('close_settings_panel');
-                this.$store.commit( 'closeSettingsPanel' );
+                this.$store.commit( 'profileBuilder/closeSettingsPanel' );
             },
 
             //Show settings tab
@@ -398,20 +398,20 @@
 
                     self.cols[col_index].els.map(function(ele_id) {
                         var ele_index = self.getIndex(self.els, ele_id);
-                        self.$store.commit('removeEle', ele_index);
+                        self.$store.commit('profileBuilder/removeEle', ele_index);
                     });
 
-                    self.$store.commit('removeCol', col_index);
+                    self.$store.commit('profileBuilder/removeCol', col_index);
                 });
 
-                self.$store.commit('removeRow', row_index);
+                self.$store.commit('profileBuilder/removeRow', row_index);
                 this.dropTextVisibility();
             },
 
             dropTextVisibility: function() {
-                
-                if ( this.$store.state.rows.length ) {
-                    this.$store.commit('wpup_drop_here', {status: false});
+    
+                if ( this.$store.state.profileBuilder.rows.length ) {
+                    this.$store.commit('profileBuilder/wpup_drop_here', {status: false});
                     
                     jQuery('#wpup-drop-zone').css({
                         border: 'none'
@@ -422,7 +422,7 @@
                         position: 'relative'
                     });
                 } else {
-                    this.$store.commit('wpup_drop_here', {status: true});
+                    this.$store.commit('profileBuilder/wpup_drop_here', {status: true});
                     
                     jQuery('#wpup-drop-zone').css({
                         border : '1px dashed'
@@ -437,22 +437,22 @@
                 //Remove element from the column
                 this.cols[target_col].els.map(function(ele_id) {
                     var ele_index = self.getIndex(self.els, ele_id);
-                    self.$store.commit('removeEle', ele_index);
+                    self.$store.commit('profileBuilder/removeEle', ele_index);
                 });
                 
                 //this.cols.splice( target_col, 1 );
-                this.$store.commit('removeCol', target_col);
+                this.$store.commit('profileBuilder/removeCol', target_col);
 
                 var target_row = this.getIndex(this.rows, this.row_id ),
                     index = this.rows[target_row].r_cols.indexOf(this.col_id);
 
-                this.$store.commit('removeColFromRow', {row_index: target_row, col_index: index});
+                this.$store.commit('profileBuilder/removeColFromRow', {row_index: target_row, col_index: index});
                     
                 //this.rows[target_row].r_cols.splice( index, 1 );
                 
                 if ( ! this.rows[target_row].r_cols.length ) {
                     //this.rows.splice(target_row, 1);
-                    this.$store.commit('removeRow', target_row);
+                    this.$store.commit('profileBuilder/removeRow', target_row);
                     this.row_id = false;
                 }
                 //this will work only for 2 col, its not execute for multi column
@@ -474,9 +474,9 @@
                     index = this.cols[target_col].els.indexOf(this.ele_id),
                     ele_index = this.getIndex(this.els, this.ele_id);
                     
-                this.$store.commit('removeEleFromCol', {col_index: target_col, ele_index: index});
+                this.$store.commit('profileBuilder/removeEleFromCol', {col_index: target_col, ele_index: index});
                 //this.cols[target_col].els.splice( index, 1 );
-                this.$store.commit('removeEle', ele_index);
+                this.$store.commit('profileBuilder/removeEle', ele_index);
                 //this.els.splice(this.ele_id, 1);
                 this.ele_id = false;
             },
@@ -491,7 +491,7 @@
                 var self  = this,
                     data  = {
                         is_update: self.profile_id,
-                        profile_id: self.$store.state.profile_id,
+                        profile_id: self.$store.state.profileBuilder.profile_id,
                         _wpnonce: wpup.nonce,
                         content_width: self.content_width,
                         content_width_unit: self.content_width_unit,
@@ -530,8 +530,8 @@
             },
 
             setFieldName: function() {
-                var ele_index = this.getIndex(this.$store.state.els, this.ele_id),
-                    label = this.$store.state.els[ele_index].ele_settings_field_val.label,
+                var ele_index = this.getIndex(this.$store.state.profileBuilder.els, this.ele_id),
+                    label = this.$store.state.profileBuilder.els[ele_index].ele_settings_field_val.label,
                                  //replace multiple spage with _
                     label = label.replace(/ +(?= )/g,'_')
                                  // replace all single spage with _
@@ -551,8 +551,8 @@
                     return;
                 }
                 
-                if ( this.$store.state.els[ele_index].ele_settings_field_val.name == '' ) {
-                    this.$store.state.els[ele_index].ele_settings_field_val.name = label;
+                if ( this.$store.state.profileBuilder.els[ele_index].ele_settings_field_val.name == '' ) {
+                    this.$store.state.profileBuilder.els[ele_index].ele_settings_field_val.name = label;
                 }
             }
         }, 

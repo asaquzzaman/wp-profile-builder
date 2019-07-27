@@ -54,10 +54,10 @@
             }
         },
 
-        dropTextVisibility: function() {
+        dropTextVisibility: function(vnode) {
             
-            if ( WPUP_Profile.$store.state.rows.length ) {
-                WPUP_Profile.$data.wpup_drop_here = false;
+            if ( vnode.context.$store.state.profileBuilder.rows.length ) {
+                vnode.context.$store.commit('profileBuilder/wpup_drop_here', {status: false});
                 $('#wpup-drop-zone').css({
                     border: 'none'
                 });
@@ -67,21 +67,21 @@
                     position: 'relative'
                 });
             } else {
-                WPUP_Profile.$data.wpup_drop_here = true;
+                vnode.context.$store.commit('profileBuilder/wpup_drop_here', {status: true});
                 $('#wpup-drop-zone').css({
                     border : '1px dashed'
                 });
             }
         },
 
-        datepicker: function() {
+        datepicker: function( el, binding, vnode ) {
             $( '.wpup-date-field').datepicker({
                 dateFormat: 'yy-mm-dd',
                 changeMonth: true,
                 changeYear: true,
                 yearRange: '-50:+5',
                 onSelect: function(dateText) {
-                    WPUP_Profile.$emit( 'wpup_profile_builders_hook', 'onchange_date', { date: dateText } );
+                    wpupBus.$emit( 'wpup_profile_builders_hook', 'onchange_date', { date: dateText } );
                 }
             });
 
@@ -114,8 +114,8 @@
             //$('.wpup-col-wrap').removeClass('wpup-border-dashed');
         },
 
-        rowSortable: function( row ) {
-            
+        rowSortable: function( row, binding, vnode ) {
+
             Sortable.create( row, {
                 group: { name: "content", put: ['settings_content']},
                 animation: 150,
@@ -131,7 +131,7 @@
                     
                     var send = { row_id: row_id, order_from: order_from, order_to: order_to };
 
-                    WPUP_Profile.$emit( 'wpup_profile_builders_hook', 'row_sortabel', send );
+                    wpupBus.$emit( 'wpup_profile_builders_hook', 'row_sortabel', send );
                 },
 
                 // Element dragging started
@@ -147,7 +147,7 @@
             });
         },
 
-        settingsContent: function(el) {
+        settingsContent: function(el, binding, vnode) {
             Sortable.create( el, {
                 group: { name: "settings_content", pull:'clone', put:false },
                 animation: 550,
@@ -169,10 +169,11 @@
                                         .index(drop_position),
                             type   = drop_position.data('type'),
                             send   = {type: type, order: order, chield: false};
-
-                            WPUP_Profile.$emit( 'wpup_profile_builders_hook', 'new_content', send ); 
+                            
+                            wpupBus.$emit( 'wpup_profile_builders_hook', 'new_content', send ); 
+                            //vnode.context.getHook( 'new_content', send );
                         
-                        WPUP_Profile_Builder.dropTextVisibility();
+                        WPUP_Profile_Builder.dropTextVisibility(vnode);
                     } 
 
                     drop_position.remove();
@@ -180,7 +181,7 @@
 
                 // Element dragging started
                 onStart: function (/**Event*/evt) {
-                   WPUP_Profile_Builder.colBorder(); 
+                    WPUP_Profile_Builder.colBorder(); 
                 },
 
                 // Element dragging started
@@ -190,8 +191,7 @@
             });
         },
 
-        colSortable: function( col ) {
-            
+        colSortable: function( col, binding, vnode ) {
             Sortable.create( col, {
                 group: { name: "colSortable", put: ['settings_content', 'colSortable'] },
                 animation: 550,
@@ -206,7 +206,7 @@
                         ele_id  = item.data('el_id'),
                         send   = { col_id: col_id, order: order, ele_id: ele_id };
 
-                    WPUP_Profile.$emit( 'wpup_profile_builders_hook', 'col_ele_sortabel', send );
+                    wpupBus.$emit( 'wpup_profile_builders_hook', 'col_ele_sortabel', send );
                 },
 
                 //Element is dropped into the list from another list
@@ -234,7 +234,7 @@
                             order  = col.find('.wpup-ele-wrap, .wpup-field-btn').index(drop_position),
                             send   = {row_id: row_id, col_id: col_id, type: type, order: order, chield: true};
                         
-                        WPUP_Profile.$emit( 'wpup_profile_builders_hook', 'new_content', send );
+                        wpupBus.$emit( 'wpup_profile_builders_hook', 'new_content', send );
                     } 
 
                     //When drop any element from one column to another column
@@ -248,7 +248,7 @@
                             ele_id      = item.data('el_id'),
                             send = { to_col_id: to_col_id, ele_id: ele_id, from_col_id: from_col_id, order: order };
                         
-                        WPUP_Profile.$emit( 'wpup_profile_builders_hook', 'col_ele_jump', send );
+                        wpupBus.$emit( 'wpup_profile_builders_hook', 'col_ele_jump', send );
                     }   
                 },
 
@@ -267,29 +267,29 @@
 
     // Register a global custom directive called v-wpup-droppable
     Vue.directive('wpup-settings-content', {
-        inserted: function (el) {
-            WPUP_Profile_Builder.settingsContent( el );
+        inserted: function (el, binding, vnode) {
+            WPUP_Profile_Builder.settingsContent( el, binding, vnode );
         }
     });
 
     // Register a global custom directive called v-wpup-col-sortable
     Vue.directive('wpup-col-sortable', {
-        inserted: function (el) {
-            WPUP_Profile_Builder.colSortable( el );
+        inserted: function (el, binding, vnode) {
+            WPUP_Profile_Builder.colSortable( el, binding, vnode );
         }
     });
 
     // Register a global custom directive called v-wpup-row-sortable
     Vue.directive('wpup-row-sortable', {
-        inserted: function (el) {
-            WPUP_Profile_Builder.rowSortable( el );
+        inserted: function (el, binding, vnode) {
+            WPUP_Profile_Builder.rowSortable( el, binding, vnode );
         }
     });
 
     // Register a global custom directive called v-wpup-datepicker
     Vue.directive('wpup-datepicker', {
-        inserted: function (el) {
-            WPUP_Profile_Builder.datepicker( el );
+        inserted: function (el, binding, vnode) {
+            WPUP_Profile_Builder.datepicker( el, binding, vnode );
         },
     });
 

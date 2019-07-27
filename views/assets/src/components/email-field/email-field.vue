@@ -30,7 +30,8 @@
 
 <script>
     export default {
-
+        props: ['ele', 'index', 'col', 'row'],
+        
         methods: {
             //Update Element
             elementUpdate: function( row, col, ele ) {

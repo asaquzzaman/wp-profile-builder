@@ -1,57 +1,78 @@
 
 export default {
-
+    data () {
+        return {
+            is_admin: wpup.is_admin,
+            wpup_ids: []
+        }
+    },
 
     computed: {
         is_user_admin: function() {
-            return this.$store.state.is_user_admin;
+            return this.$store.state.profileBuilder.is_user_admin;
         },
 
         wpup_drop_here: function() {
-            return this.$store.state.wpup_drop_here;
+            return this.$store.state.profileBuilder.wpup_drop_here;
         },
 
         header_config: function() {
-            return this.$store.state.header_config;
+            return this.$store.state.profileBuilder.header_config;
         },
 
         social_profile: function() {
-            return this.$store.state.social_profile;
+            return this.$store.state.profileBuilder.social_profile;
         },
         isTemplateMode: function() {
-            return this.$store.state.is_template_mode;
+            return this.$store.state.profileBuilder.is_template_mode;
         },
         
         isUpdateMode: function() {
-            return this.$store.state.is_update_mode;
+            return this.$store.state.profileBuilder.is_update_mode;
         },
 
         contentWidth: function() {
-            var unit = this.$store.state.content_width_unit == '=' ? 'px' : '%';
+            var unit = this.$store.state.profileBuilder.content_width_unit == '=' ? 'px' : '%';
             return {
-                width: this.$store.state.content_width + unit
+                width: this.$store.state.profileBuilder.content_width + unit
             }
         },
 
         rows: function() {
-            return this.$store.state.rows;
+            return this.$store.state.profileBuilder.rows;
         },
 
         cols: function() {
-            return this.$store.state.cols;
+            return this.$store.state.profileBuilder.cols;
         },
 
         els: function() {
-            return this.$store.state.els;
+            return this.$store.state.profileBuilder.els;
         },
         userCanUpdateProfile: function() {
-            return this.$store.state.userCanUpdateProfile;
+            return this.$store.state.profileBuilder.userCanUpdateProfile;
         },
     },
 
 
     //Common methods for all components
     methods: {
+    
+        wpup_generate_random_number( callback ) {
+            var randomnumber = Math.ceil( Math.random()*10000 );
+            
+            if( this.wpup_ids.indexOf( randomnumber ) > '-1' ) {
+                this.wpup_generate_random_number();
+            }
+
+            this.wpup_ids.push( randomnumber );
+
+            if ( typeof callback == 'undefined' ) {
+                return randomnumber;
+            }
+
+            callback( callback( randomnumber ) );
+        },
         registerStore (module_name, store) {
             if (typeof store === 'undefined') {
                 return false;
@@ -73,7 +94,7 @@ export default {
         },
         dropZon: function() {
             var style = {};
-            if ( this.$store.state.profileBuilder.rows.length ) {
+            if ( this.$store.state.profileBuilder.profileBuilder.rows.length ) {
                 style = {
                     border : 'none'
                 }
@@ -87,13 +108,13 @@ export default {
             return style;
         },
         isProfileMode: function() {
-            return this.$store.state.is_profile_mode;
+            return this.$store.state.profileBuilder.is_profile_mode;
         },
 
         view_as_other_user: function(ele) {
 
             if ( this.isProfileMode() && ele.field_val == '' ) {
-                if ( this.$store.state.current_user_id != wpup.current_logged_in_user.ID ) {
+                if ( this.$store.state.profileBuilder.current_user_id != wpup.current_logged_in_user.ID ) {
                     return true;
                 } 
             }
@@ -104,8 +125,8 @@ export default {
 
         view_self_profile: function(ele) {
             
-            if ( !this.$store.state.is_template_mode && this.isProfileMode() && ele.field_val == '' ) {
-                if ( this.$store.state.current_user_id == wpup.current_logged_in_user.ID ) {
+            if ( !this.$store.state.profileBuilder.is_template_mode && this.isProfileMode() && ele.field_val == '' ) {
+                if ( this.$store.state.profileBuilder.current_user_id == wpup.current_logged_in_user.ID ) {
                     return true;
                 } 
             }
@@ -122,10 +143,10 @@ export default {
         },
 
         templateMode: function() {
-            this.$store.commit('profileMode');
+            this.$store.commit('profileBuilder/profileMode');
         },
         profileUpdateMode: function() {
-            this.$store.commit('profileUpdateMode');
+            this.$store.commit('profileBuilder/profileUpdateMode');
         },
 
         /**
@@ -140,7 +161,7 @@ export default {
                 col_index,
                 col_ele_index;
 
-            this.$store.state.cols.map(function(col, index) {
+            this.$store.state.profileBuilder.cols.map(function(col, index) {
                 var is_ele = col.els.indexOf(ele_id);
                 
                 if ( is_ele != '-1' ) {
@@ -152,11 +173,11 @@ export default {
 
             var target_col = col_index,
                 index = col_ele_index,
-                ele_index = this.$store.state.els.wpupfilter(this.ele_id);
+                ele_index = this.$store.state.profileBuilder.els.wpupfilter(this.ele_id);
                 
-            this.$store.commit('removeEleFromCol', {col_index: target_col, ele_index: index});
+            this.$store.commit('profileBuilder/removeEleFromCol', {col_index: target_col, ele_index: index});
             //this.cols[target_col].els.splice( index, 1 );
-            this.$store.commit('removeEle', ele_index);
+            this.$store.commit('profileBuilder/removeEle', ele_index);
             //this.els.splice(this.ele_id, 1);
             this.ele_id = false;
         },

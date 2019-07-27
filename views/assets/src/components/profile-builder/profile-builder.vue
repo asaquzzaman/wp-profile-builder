@@ -1,6 +1,5 @@
 <template>
 	<div v-cloak :class="'wpup-profile-builder '+ isAdmin ? 'wpup-user-profile-admin' : 'wpup-user-profile-frontend'">
-	    <router-view></router-view>
 	    <div class="wpup-content-wrap">
 	        <div :style="contentWidth">
 	            <div class="wpup-profile-builder-btn-wrap">
@@ -13,13 +12,13 @@
 	            </div>
 	            <form action="">
 	                <div class="wpup-profile-wrap">
-	                    <wpup-profile-header></wpup-profile-header>
+	                    <profile-header></profile-header>
 	                    
 	                    <div id="wpup-profile-content-wrap">
 	                        
 	                            <div v-wpup-row-sortable  id="wpup-drop-zone" :style="dropZon()">
 	                                
-	                                <wpup-row 
+	                                <row 
 	                                    v-for="( row, index ) in rows"  
 	                                    :row="row" 
 	                                    :els="els" 
@@ -28,7 +27,7 @@
 	                                    :key="row.id"
 	                                    :index="index">
 	                            
-	                                </wpup-row>
+	                                </row>
 	                            </div> 
 
 	                            <div v-if="wpup_drop_here" class="wpup-drop-here">Drop your contenet with new row</div>  
@@ -38,9 +37,9 @@
 	        </div>
 	    </div>
 
-	    <div v-if="isAdmin" class="wpup-settings-wrap"><wpup-view-settings-panel :selected_header="selected_header" :header_settings="header_config" :header="header" :rows="rows" :cols="cols" :els="els"></wpup-view-settings-panel></div>
+	    <div v-if="isAdmin" class="wpup-settings-wrap"><settings-panel :selected_header="selected_header" :header_settings="header_config" :header="header" :rows="rows" :cols="cols" :els="els"></settings-panel></div>
 	    
-	    <div v-else class="wpup-settings-wrap" v-if="isTemplateMode"><wpup-view-settings-panel :selected_header="selected_header" :header_settings="header_config" :header="header" :rows="rows" :cols="cols" :els="els"></wpup-view-settings-panel></div>
+	    <div class="wpup-settings-wrap" v-if="!isAdmin && isTemplateMode"><settings-panel :selected_header="selected_header" :header_settings="header_config" :header="header" :rows="rows" :cols="cols" :els="els"></settings-panel></div>
 
 	    <div class="wpup-clearfix"></div>
     </div>
@@ -50,6 +49,9 @@
 <script>
 	import Mixin from './mixin';
 	import './directive';
+    import Header from '@components/profile-header/profile-header.vue'
+    import SettingsPanel from '@components/profile-builder-settings/profile-builder-settings.vue'
+    import Row from '@components/row/row.vue'
 
 	export default {
 		mixins: [Mixin],
@@ -58,13 +60,26 @@
 				isAdmin: wpup.is_admin == '1' ? true : false
 			}
 		},
+        components: {
+            'profile-header': Header,
+            'settings-panel': SettingsPanel,
+            'row': Row
+        },
 		created: function() {
-            this.$on( 'wpup_profile_builders_hook', this.getHook );
+            wpupBus.$on( 'wpup_profile_builders_hook', this.getHook );
         },
 
         methods: {
+            templateMode: function() {
+                this.$store.commit('profileBuilder/profileMode');
+            },
+            profileUpdateMode: function() {
+                this.$store.commit('profileBuilder/profileUpdateMode');
+            },
+
             //Get all hook and seperate them by id
-            getHook: function(id, data, e) {
+            getHook: function(id, data ) {
+                
                 switch(id) {
                     
                     case "close_settings_panel":
@@ -164,7 +179,7 @@
                 });
                 
                 var col = {
-                    id: wpup_generate_random_number(),
+                    id: this.wpup_generate_random_number(),
                     span: 4,
                     els: [],
                     parent: []
@@ -176,7 +191,7 @@
 
             // Filtering element for settings option
             elementFilter: function( type ) {
-                var id = wpup_generate_random_number();
+                var id = this.wpup_generate_random_number();
                 var element = {
                         id: id,
                         span: 4,
@@ -248,12 +263,12 @@
                     var target_col = content.chield ? this.$store.state.profileBuilder.cols.wpupfilter( content.col_id ) : false;
                 } else {
                     var row = {
-                        id: wpup_generate_random_number(),
+                        id: this.wpup_generate_random_number(),
                         r_cols: [],
                     },
 
                     col = {
-                        id: wpup_generate_random_number(),
+                        id: this.wpup_generate_random_number(),
                         span: 4,
                         c_cols: [],
                         els: []
@@ -270,10 +285,10 @@
 
                 group_content.map(function( element, index ) {
 
-                    self.$store.commit( 'newEle', { ele: element } );
+                    self.$store.commit( 'profileBuilder/newEle', { ele: element } );
                     
                     if ( content.chield ) {
-                        self.$store.commit( 'colNewEle', { target_col: target_col, order: index, ele_id: element.id });
+                        self.$store.commit( 'profileBuilder/colNewEle', { target_col: target_col, order: index, ele_id: element.id });
                          
                     } else {
                         col.els.push(element.id);
@@ -281,18 +296,18 @@
                 });
 
                 if ( ! group_content.length ) {
-                    self.$store.commit( 'newEle', { ele: element } );
+                    self.$store.commit( 'profileBuilder/newEle', { ele: element } );
                             
                     if ( content.chield ) {
-                        self.$store.commit( 'colNewEle', { target_col: target_col, order: content.order, ele_id: element.id });
+                        self.$store.commit( 'profileBuilder/colNewEle', { target_col: target_col, order: content.order, ele_id: element.id });
                     } else {
                         col.els.push(element.id);
                     }
                 }
 
                 if ( ! content.chield ) {
-                    this.$store.commit( 'newCol', {order: 0, col: col} );
-                    this.$store.commit( 'newRow', {order: order, row: row} );
+                    this.$store.commit( 'profileBuilder/newCol', {order: 0, col: col} );
+                    this.$store.commit( 'profileBuilder/newRow', {order: order, row: row} );
                     
                 }
             },
@@ -540,17 +555,18 @@
             },
 
             assignGroupProperty: function( group_data ) {
+                var self = this;
                 group_data.map(function( element, index ) {
 
-                    wpup_generate_random_number(function(id) {
+                    self.wpup_generate_random_number(function(id) {
                         if ( id ) {
                             var new_id = { id: id };
                             var ele    = Object.assign( new_id, element ); 
 
-                            self.$store.commit( 'newEls', { ele: ele } );
+                            self.$store.commit( 'profileBuilder/newEls', { ele: ele } );
                             
                             if ( content.chield ) {
-                                self.$store.commit( 'colNewEle', { target_col: target_col, order: content.order, ele_id: ele.id });
+                                self.$store.commit( 'profileBuilder/colNewEle', { target_col: target_col, order: content.order, ele_id: ele.id });
                                  
                             } else {
                                 col.els.push(ele.id);
@@ -572,7 +588,7 @@
             },
 
             cancelEditMode: function() {
-                this.$store.commit( 'cancelEditMode' );
+                this.$store.commit( 'profileBuilder/cancelEditMode' );
             },
             profile_submit: function() {
                 

@@ -1,4 +1,4 @@
-export default{
+export default {
 
     computed: {
         is_user_admin: function() {
@@ -70,7 +70,7 @@ export default{
             event = ( typeof event == 'undefined' ) ? false : event;
             data  = ( typeof data == 'undefined' ) ? false : data;
 
-            this.$root.$emit( 'wpup_profile_builders_hook', id, data, event );
+            wpupBus.$emit( 'wpup_profile_builders_hook', id, data, event );
         },
 
         templateMode: function() {

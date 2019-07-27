@@ -4,7 +4,7 @@
         <div  :class="getRowClass(row)" :data-order="index" :data-row_id="row.id">
             <div v-if="isTemplateMode" class="wpup-update-row" @click.prevent="rowUpdate(row.id)">
                 <div class="wpup-row-move-icon"><i class="wpup-row-drag fa fa-arrows-alt" aria-hidden="true"></i></div>
-                <div class="wpup-row-id"><?php _e( 'Row', 'wpup' ); ?> #{{row.id}}</div>
+                <div class="wpup-row-id">Row #{{row.id}}</div>
             </div>
             
             <div  v-wpup-col-sortable v-for="(col, col_index) in getCols(cols, row)" 
@@ -14,12 +14,12 @@
 
                 <div v-if="isTemplateMode" @click.prevent="columnUpdate( col, row )" class="wpup-update-col">
                     <!-- <i class="fa fa-pencil-square-o" aria-hidden="true"></i> -->
-                    <div class="wpup-ele-edit-id"><?php _e( 'Column', 'wpup' ); ?> #{{col.id}}</div>
+                    <div class="wpup-ele-edit-id">Column #{{col.id}}</div>
                 </div>
 
                 <div class="wpup-inside-drop" v-if="! hasElements( col )">
 
-                    <?php _e( 'Drop Your Field Here', 'wpup' ); ?>
+                    Drop Your Field Here
                         
                 </div>
 
@@ -33,7 +33,7 @@
                     v-show="is_visible(ele)"
                     :key="ele.id">
                 
-                    <wpup-text-field 
+                    <text-field 
                         :row="row"
                         :col="col" 
                         :ele="ele" 
@@ -42,9 +42,9 @@
                         :cols="cols"
                         v-if="'text_field' == ele.type">
                         
-                    </wpup-text-field>
+                    </text-field>
 
-                    <wpup-email-field 
+                    <email-field 
                         :row="row"
                         :col="col" 
                         :ele="ele" 
@@ -53,9 +53,9 @@
                         :cols="cols"
                         v-if="'email_field' == ele.type">
                         
-                    </wpup-email-field>
+                    </email-field>
 
-                    <wpup-password-field 
+                    <password-field 
                         :row="row"
                         :col="col" 
                         :ele="ele" 
@@ -64,9 +64,9 @@
                         :cols="cols"
                         v-if="'password_field' == ele.type">
                         
-                    </wpup-password-field>
+                    </password-field>
 
-                    <wpup-radio-field 
+                    <radio-field 
                         :row="row"
                         :col="col" 
                         :ele="ele" 
@@ -75,9 +75,9 @@
                         :cols="cols"
                         v-if="'radio_field' == ele.type">
                         
-                    </wpup-radio-field>
+                    </radio-field>
 
-                    <wpup-select-field 
+                    <select-field 
                         :row="row"
                         :col="col" 
                         :ele="ele" 
@@ -86,9 +86,9 @@
                         :cols="cols"
                         v-if="'select_field' == ele.type">
                         
-                    </wpup-select-field>
+                    </select-field>
 
-                    <wpup-section-field
+                    <section-field
                         :row="row" 
                         :col="col" 
                         :ele="ele" 
@@ -97,9 +97,9 @@
                         :cols="cols"
                         v-if="'section_field' == ele.type">
                         
-                    </wpup-section-field>
+                    </section-field>
 
-                    <wpup-social-field
+                    <social-field
                         :row="row" 
                         :col="col" 
                         :ele="ele" 
@@ -108,9 +108,9 @@
                         :cols="cols"
                         v-if="'social_field' == ele.type">
                         
-                    </wpup-social-field>
+                    </social-field>
 
-                    <wpup-url-field
+                    <url-field
                         :row="row" 
                         :col="col" 
                         :ele="ele" 
@@ -119,9 +119,9 @@
                         :cols="cols"
                         v-if="'url_field' == ele.type">
                         
-                    </wpup-url-field>
+                    </url-field>
 
-                    <wpup-date-field
+                    <date-field
                         :row="row" 
                         :col="col" 
                         :ele="ele" 
@@ -130,7 +130,7 @@
                         :cols="cols"
                         v-if="'date_field' == ele.type">
                         
-                    </wpup-date-field>
+                    </date-field>
 
                 </div>
             </div>
@@ -140,8 +140,31 @@
 
 
 <script>
+    import TextField from '@components/text-field/text-field.vue';
+    import EmailField from '@components/email-field/email-field.vue';
+    import PasswordField from '@components/password-field/password-field.vue';
+    import RadioField from '@components/radio-field/radio-field.vue';
+    import SelectField from '@components/select-field/select-field.vue';
+    import SectionField from '@components/section-field/section-field.vue';
+    import SocialField from '@components/social-field/social-field.vue';
+    import UrlField from '@components/url-field/url-field.vue';
+    import DateField from '@components/date-field/date-field.vue';
+
     export default {
         props: ['row', 'index'],
+
+        components: {
+            'text-field': TextField,
+            'email-field': EmailField,
+            'password-field': PasswordField,
+            'radio-field': RadioField,
+            'select-field': SelectField,
+            'section-field': SectionField,
+            'social-field': SocialField,
+            'url-field': UrlField,
+            'date-field': DateField
+
+        },
 
         methods: { 
             //Generate element class
@@ -205,7 +228,7 @@
             //Filter column from rows
             getCols: function(cols, row) {
                 var f_cols = [];
-      
+
                 row.r_cols.map(function(id) {
                     cols.filter(function (col) { 
                         if ( col.id == id ) {
