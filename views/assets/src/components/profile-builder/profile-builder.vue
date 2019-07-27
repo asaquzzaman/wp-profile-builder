@@ -1,5 +1,5 @@
 <template>
-	<div v-cloak :class="'wpup-profile-builder '+ isAdmin ? 'wpup-user-profile-admin' : 'wpup-user-profile-frontend'">
+	<div id="wpup-user-profile"  :class="isAdmin ? 'wpup-user-profile-admin wpup-profile-builder' : 'wpup-profile-builder wpup-user-profile-frontend'">
 	    <div class="wpup-content-wrap">
 	        <div :style="contentWidth">
 	            <div class="wpup-profile-builder-btn-wrap">
@@ -49,9 +49,9 @@
 <script>
 	import Mixin from './mixin';
 	import './directive';
-    import Header from '@components/profile-header/profile-header.vue'
-    import SettingsPanel from '@components/profile-builder-settings/profile-builder-settings.vue'
-    import Row from '@components/row/row.vue'
+    import Header from './profile-header/profile-header.vue'
+    import SettingsPanel from './profile-builder-settings/profile-builder-settings.vue'
+    import Row from './row/row.vue'
 
 	export default {
 		mixins: [Mixin],

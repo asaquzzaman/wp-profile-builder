@@ -2,7 +2,7 @@
     <div class="wpup-el-sort"> 
         <div v-if="isTemplateMode" @click.prevent="elementUpdate( row, col, ele)" class="wpup-update-ele">
             <div class="wpup-row-move-icon"><i class="wpup-ele-drag fa fa-arrows-alt" aria-hidden="true"></i></div>
-            <div class="wpup-row-id"><?php _e( 'Element', 'wpup' ); ?> #{{ele.id}}</div>
+            <div class="wpup-row-id">Element #{{ele.id}}</div>
         </div>
         <div class="wpup-label-wrap wpup-clearfix">
 
@@ -20,7 +20,9 @@
 </template>
 
 <script>
+    import Mixin from '@components/profile-builder/mixin';
     export default {
+        mixins: [Mixin],
         props: ['ele', 'col', 'row'],
         methods: {
             //Update Element

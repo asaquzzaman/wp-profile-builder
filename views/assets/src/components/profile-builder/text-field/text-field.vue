@@ -4,7 +4,7 @@
             <div class="wpup-row-move-icon">
                 <i class="wpup-ele-drag fa fa-arrows-alt" aria-hidden="true"></i>
             </div>
-            <div class="wpup-row-id"><?php _e( 'Element', 'wpup' ); ?> #{{ele.id}}</div>
+            <div class="wpup-row-id">Element #{{ele.id}}</div>
         </div>
         <div class="wpup-label-wrap wpup-clearfix">
             
@@ -17,7 +17,7 @@
                 {{ele.ele_settings_field_val.content}}
             </div>
              <div v-if="view_as_other_user(ele)" class="wpup-label-content wpup-clearfix">
-                <?php _e('No ' , 'wpup'); ?>{{ele.ele_settings_field_val.label}}<?php _e( ' info to show'); ?>
+                No {{ele.ele_settings_field_val.label}} info to show
             </div>
 
             <div v-if="isUpdateMode" class="wpup-label-content wpup-clearfix">
@@ -29,7 +29,9 @@
 </template>
 
 <script>
+    import Mixin from '@components/profile-builder/mixin';
     export default {
+        mixins: [Mixin],
         props: ['ele', 'index', 'col', 'row'],
         methods: {
             //Update Element

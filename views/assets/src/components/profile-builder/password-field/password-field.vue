@@ -2,7 +2,7 @@
     <div class="wpup-el-sort"> 
         <div v-if="isTemplateMode" @click.prevent="elementUpdate( row, col, ele)" class="wpup-update-ele">
             <div class="wpup-row-move-icon"><i class="wpup-ele-drag fa fa-arrows-alt" aria-hidden="true"></i></div>
-            <div class="wpup-row-id wpup-clearfix"><?php _e( 'Element', 'wpup' ); ?> #{{ele.id}}</div>
+            <div class="wpup-row-id wpup-clearfix">Element #{{ele.id}}</div>
         </div>
         <div class="wpup-label-wrap wpup-clearfix">
             <label  class="wpup-label">{{ele.ele_settings_field_val.label}}</label>
@@ -15,7 +15,7 @@
                     <span class="wpup-pass-cross-icon-wrap"><i @click.prevent="activePasswordField()" class="fa fa-times-circle"></i></span> 
                     <div v-if="ele.ele_settings_field.description">{{ ele.ele_settings_field_val.description }}</div>
                 </div>
-                <button @click.prevent="activePasswordField()" v-else><?php _e( 'Generate new password', 'wpup' ); ?></button>
+                <button @click.prevent="activePasswordField()" v-else>Generate new password</button>
             </div>
 
         </div>
@@ -24,7 +24,9 @@
 
 
 <script>
+    import Mixin from '@components/profile-builder/mixin';
     export default {
+        mixins: [Mixin],
         props: ['ele', 'index', 'col', 'row'],
 
         data: function() {

@@ -55,7 +55,7 @@
 
                             <div class="wpup-settings-btn-wrap" v-show="col_settings">
                                 <ul class="wpup-new-col">
-                                    <li  class="wpup-field-col" data-span="4"><a @click.self.prevent="removeCol()" href="#">Remove></a></li>
+                                    <li  class="wpup-field-col" data-span="4"><a @click.self.prevent="removeCol()" href="#">Remove</a></li>
                                 </ul>
                             </div>
                         </li>
@@ -70,7 +70,7 @@
                             <div class="wpup-settings-btn-wrap" v-show="ele_settings">
                                 <ul class="wpup-new-ele">
 
-                                    <li class="wpup-field-col" data-span="4"><a @click.self.prevent="removeEle()" href="#">Remove></a></li>
+                                    <li class="wpup-field-col" data-span="4"><a @click.self.prevent="removeEle()" href="#">Remove</a></li>
 
                                 </ul>
 
@@ -159,8 +159,10 @@
 </template>
 
 <script>
+    import Mixin from '@components/profile-builder/mixin';
     export default {
-        props: ['view_settings_panel', 'header_settings', 'header', 'selected_header'],
+        mixins: [Mixin],
+        props: ['header_settings'],
 
         created: function() {
            wpupBus.$on( 'wpup_profile_builders_hook', this.getHook );
@@ -183,7 +185,7 @@
                 header_content: {},
                 submit_disabled: false,
                 show_spinner: false,
-                profile_id: false,
+                //profile_id: false,
                 content_width: (typeof this.$store.state.profileBuilder.content_width == 'undefined') ? 600 : this.$store.state.profileBuilder.content_width,
                 content_width_unit: (typeof this.$store.state.profileBuilder.content_width_unit == 'undefined') ? '=' : this.$store.state.profileBuilder.content_width_unit,
                 header_birth_day: '',
@@ -380,7 +382,7 @@
                 });
                 
                 var col = {
-                    id: wpup_generate_random_number(),
+                    id: this.wpup_generate_random_number(),
                     span: span,
                     els: []
                 };

@@ -8,50 +8,7 @@ export default {
     },
 
     computed: {
-        is_user_admin: function() {
-            return this.$store.state.profileBuilder.is_user_admin;
-        },
 
-        wpup_drop_here: function() {
-            return this.$store.state.profileBuilder.wpup_drop_here;
-        },
-
-        header_config: function() {
-            return this.$store.state.profileBuilder.header_config;
-        },
-
-        social_profile: function() {
-            return this.$store.state.profileBuilder.social_profile;
-        },
-        isTemplateMode: function() {
-            return this.$store.state.profileBuilder.is_template_mode;
-        },
-        
-        isUpdateMode: function() {
-            return this.$store.state.profileBuilder.is_update_mode;
-        },
-
-        contentWidth: function() {
-            var unit = this.$store.state.profileBuilder.content_width_unit == '=' ? 'px' : '%';
-            return {
-                width: this.$store.state.profileBuilder.content_width + unit
-            }
-        },
-
-        rows: function() {
-            return this.$store.state.profileBuilder.rows;
-        },
-
-        cols: function() {
-            return this.$store.state.profileBuilder.cols;
-        },
-
-        els: function() {
-            return this.$store.state.profileBuilder.els;
-        },
-        userCanUpdateProfile: function() {
-            return this.$store.state.profileBuilder.userCanUpdateProfile;
-        },
     },
 
 

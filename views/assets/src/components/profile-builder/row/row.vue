@@ -17,7 +17,7 @@
                     <div class="wpup-ele-edit-id">Column #{{col.id}}</div>
                 </div>
 
-                <div class="wpup-inside-drop" v-if="! hasElements( col )">
+                <div class="wpup-inside-drop" v-if="!hasElements( col )">
 
                     Drop Your Field Here
                         
@@ -138,19 +138,30 @@
     </div>
 </template>
 
+<style lang="less">
+    .wpup-row-sort {
+        .wpup-inside-drop {
+            padding: 10px;
+        }
+    }
+    
+</style>
+
 
 <script>
-    import TextField from '@components/text-field/text-field.vue';
-    import EmailField from '@components/email-field/email-field.vue';
-    import PasswordField from '@components/password-field/password-field.vue';
-    import RadioField from '@components/radio-field/radio-field.vue';
-    import SelectField from '@components/select-field/select-field.vue';
-    import SectionField from '@components/section-field/section-field.vue';
-    import SocialField from '@components/social-field/social-field.vue';
-    import UrlField from '@components/url-field/url-field.vue';
-    import DateField from '@components/date-field/date-field.vue';
+    import Mixin from '@components/profile-builder/mixin';
+    import TextField from '@components/profile-builder/text-field/text-field.vue';
+    import EmailField from '@components/profile-builder/email-field/email-field.vue';
+    import PasswordField from '@components/profile-builder/password-field/password-field.vue';
+    import RadioField from '@components/profile-builder/radio-field/radio-field.vue';
+    import SelectField from '@components/profile-builder/select-field/select-field.vue';
+    import SectionField from '@components/profile-builder/section-field/section-field.vue';
+    import SocialField from '@components/profile-builder/social-field/social-field.vue';
+    import UrlField from '@components/profile-builder/url-field/url-field.vue';
+    import DateField from '@components/profile-builder/date-field/date-field.vue';
 
     export default {
+        mixins: [Mixin],
         props: ['row', 'index'],
 
         components: {

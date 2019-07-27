@@ -25,6 +25,10 @@ export default {
             return this.$store.state.profileBuilder.view_settings_panel;
         },
 
+        isTemplateMode: function() {
+            return this.$store.state.profileBuilder.is_template_mode;
+        },
+
         profile_id: function() {
             return this.$store.state.profileBuilder.profile_id;
         },

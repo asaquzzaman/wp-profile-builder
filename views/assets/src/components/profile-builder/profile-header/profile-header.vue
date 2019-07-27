@@ -25,7 +25,7 @@
 
             <div v-for="header_val in header" v-if="header_val.visibility == '1'">
                 <p class="wpup-user-title">{{ header_val.title }}</p>
-                <p v-if="header_val.content == ''" class="wpup-user-value" style="text-transform: capitalize;"><?php _e('No ' , 'wpup'); ?>{{ header_val.type }}<?php _e( ' info to show'); ?></p>
+                <p v-if="header_val.content == ''" class="wpup-user-value" style="text-transform: capitalize;">No {{ header_val.type }} info to show</p>
                 <p v-if="header_val.content != '' && header_val.type == 'birthday'" class="wpup-user-value" style="text-transform: capitalize;">{{ dateFormat( header_val.content ) }}</p>
                 <p v-if="header_val.content != '' && header_val.type != 'birthday'" class="wpup-user-value" style="text-transform: capitalize;">{{ header_val.content }}</p>
 
@@ -46,19 +46,19 @@
             
             <div  v-for="header_val in header">
                 <div class="wpup-input-field-warp wpup-clearfix" v-if="header_val.type == 'birthday'">
-                    <label class="wpup-header-update-field-label"><?php _e( 'Birthday', 'wpup' ); ?></label>
+                    <label class="wpup-header-update-field-label">Birthday</label>
                     <input @blur.prevent="daePickerFoucusOut(header_val, $event)" class="wpup-header-input-field wpup-date-field" v-wpup-datepicker v-model="header_val.content" :name="header_val.type"  type="text">
             
                 </div>
 
                 <div class="wpup-input-field-warp wpup-clearfix" v-if="header_val.type == 'location'">
-                    <label class="wpup-header-update-field-label"><?php _e( 'Location', 'wpup' ); ?></label>
+                    <label class="wpup-header-update-field-label">Location</label>
                     <input class="wpup-header-input-field" v-model="header_val.content" :name="header_val.type" type="text">
             
                 </div>
 
                 <div class="wpup-input-field-warp wpup-clearfix" v-if="header_val.type == 'phone'">
-                    <label class="wpup-header-update-field-label"><?php _e( 'Phone', 'wpup' ); ?></label>
+                    <label class="wpup-header-update-field-label">Phone</label>
                     <input class="wpup-header-input-field"  v-model="header_val.content" :name="header_val.type"  type="text">
             
                 </div>
@@ -69,8 +69,9 @@
 
 
 <script>
+    import Mixin from '@components/profile-builder/mixin';
     export default {
-
+        mixins: [Mixin],
         data: function() {
             return {
             

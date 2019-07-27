@@ -3,7 +3,7 @@
         <!-- <div class="wpup-row-drag">element drag</div> -->
         <div v-if="isTemplateMode" @click.prevent="elementUpdate( row, col, ele)" class="wpup-update-ele">
             <!-- <div class="wpup-ele-move-icon"><i class="wpup-ele-drag fa fa-arrows-alt" aria-hidden="true"></i></div> -->
-            <div class="wpup-ele-edit-id"><?php _e( 'Element', 'wpup' ); ?> #{{ele.id}}</div>
+            <div class="wpup-ele-edit-id">Element #{{ele.id}}</div>
         </div>
         <div :class="getSectionClass(ele)" @click.self.prevent="circleUpDown()">
             <i @click.self.prevent="circleUpDown()" v-if="arrow_circle" class="fa fa-arrow-circle-up" aria-hidden="true"></i>
@@ -15,7 +15,9 @@
 
 
 <script>
+    import Mixin from '@components/profile-builder/mixin';
     export default {
+        mixins: [Mixin],
         props: ['row', 'ele', 'col'],
     
         data: function() {
