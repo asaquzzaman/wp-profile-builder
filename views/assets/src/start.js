@@ -6,6 +6,7 @@ import '@directives/directive'
 import Mixin from '@helpers/mixin/mixin'
 import App from './App.vue'
 import '@helpers/common-components'
+import wpupMenuFix from '@helpers/menu-fix'
 
 window.wpupBus = new Vue();
 
@@ -22,5 +23,7 @@ var WPUP_Vue = {
 Vue.mixin(Mixin);
 
 new Vue(WPUP_Vue); 
+
+wpupMenuFix('wpup-profile-builder');
 
 

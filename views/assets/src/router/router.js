@@ -1,5 +1,7 @@
 
 import '@components/profile-builder/router';
+import '@components/my-profile/router';
+import '@components/users/router';
 import Empty from '@components/root/init.vue';
 
 wpSpearWPUPRouters.push({

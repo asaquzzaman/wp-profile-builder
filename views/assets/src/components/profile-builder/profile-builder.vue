@@ -46,12 +46,35 @@
 
 </template>
 
+<style lang="less">
+    .wpup-profile-builder {
+        width: 100%;  
+    }
+
+    .wpup-user-profile-admin .wpup-profile-update-btn {
+      display: block;
+    }
+    .wpup-user-profile-admin .wpup-content-wrap {
+      float: left;
+      width: 65%;
+    }
+    .wpup-user-profile-admin .wpup-content-wrap .wpup-profile-builder-btn-wrap {
+      margin-bottom: 5px;
+    }
+    .wpup-user-profile-admin #wpup-settings-panel-wrap {
+      right: 1%;
+      left: auto;
+      top: 61px;
+    }
+
+</style>
+
 <script>
 	import Mixin from './mixin';
 	import './directive';
-    import Header from './profile-header/profile-header.vue'
-    import SettingsPanel from './profile-builder-settings/profile-builder-settings.vue'
-    import Row from './row/row.vue'
+    import Header from '@components/common/header.vue'
+    import SettingsPanel from './settings.vue'
+    import Row from '@components/common/row.vue'
 
 	export default {
 		mixins: [Mixin],

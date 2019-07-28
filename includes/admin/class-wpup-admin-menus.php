@@ -38,15 +38,20 @@ class Admin_Menu {
      * @return void
      */
     public function admin_menu() {
+        global $submenu;
+
         $profile    = add_menu_page( __( 'Profile', 'wpup' ), __( 'Profile', 'wpup' ), 'administrator', 'wpup-profile-builder', array( $this, 'user_profile_page' ), 'dashicons-id', null );
-        $profile    = add_submenu_page( 'wpup-profile-builder', __('Build Profile', 'wpup' ), __( 'Build Profile', 'wpup' ), 'administrator', 'wpup-profile-builder', array( $this, 'user_profile_page' ), 'dashicons-id', null );
-        $my_profile = add_submenu_page( 'wpup-profile-builder', __( 'My Profile', 'wpup' ), __( 'My Profile', 'wpup' ), 'read', 'wpup-profile', array( $this, 'my_profile' ), 'dashicons-id', null );
-        $members    = add_submenu_page( 'wpup-profile-builder', __( 'Users List', 'wpup' ), __( 'Users List', 'wpup' ), 'read', 'wpup-members', array( $this, 'members' ), 'dashicons-id', null );
+        $submenu['wpup-profile-builder'][] = [ __('Build Profile', 'wpup' ), 'administrator', 'admin.php?page=wpup-profile-builder#/' ];
+        $submenu['wpup-profile-builder']['my_profile'] = [ __( 'My Profile', 'wpup' ), 'read', 'admin.php?page=wpup-profile-builder#/my-profile' ];
+        $submenu['wpup-profile-builder']['users'] = [ __( 'Users', 'wpup' ), 'read', 'admin.php?page=wpup-profile-builder#/users' ];
+        //$profile    = add_submenu_page( 'wpup-profile-builder', __('Build Profile', 'wpup' ), __( 'Build Profile', 'wpup' ), 'administrator', 'wpup-profile-builder', array( $this, 'user_profile_page' ), 'dashicons-id', null );
+        //$my_profile = add_submenu_page( 'wpup-profile-builder', __( 'My Profile', 'wpup' ), __( 'My Profile', 'wpup' ), 'read', 'wpup-profile', array( $this, 'my_profile' ), 'dashicons-id', null );
+        //$members    = add_submenu_page( 'wpup-profile-builder', __( 'Users List', 'wpup' ), __( 'Users List', 'wpup' ), 'read', 'wpup-members', array( $this, 'members' ), 'dashicons-id', null );
         $settings   = add_submenu_page( 'wpup-profile-builder', __( 'Profile', 'wpup' ), __( 'Settings', 'wpup' ), 'administrator', 'wpup-settings', array( $this, 'settings_page' ), 'dashicons-id', null );
         
         add_action( 'admin_print_styles-' . $profile, array( $this, 'profile_scripts' ) );
-        add_action( 'admin_print_styles-' . $members, array( $this, 'member_scripts' ) );
-        add_action( 'admin_print_styles-' . $my_profile, array( $this, 'my_profile_scripts' ) );
+        //add_action( 'admin_print_styles-' . $members, array( $this, 'member_scripts' ) );
+        //add_action( 'admin_print_styles-' . $my_profile, array( $this, 'my_profile_scripts' ) );
     }
 
    /**

@@ -150,15 +150,15 @@
 
 <script>
     import Mixin from '@components/profile-builder/mixin';
-    import TextField from '@components/profile-builder/text-field/text-field.vue';
-    import EmailField from '@components/profile-builder/email-field/email-field.vue';
-    import PasswordField from '@components/profile-builder/password-field/password-field.vue';
-    import RadioField from '@components/profile-builder/radio-field/radio-field.vue';
-    import SelectField from '@components/profile-builder/select-field/select-field.vue';
-    import SectionField from '@components/profile-builder/section-field/section-field.vue';
-    import SocialField from '@components/profile-builder/social-field/social-field.vue';
-    import UrlField from '@components/profile-builder/url-field/url-field.vue';
-    import DateField from '@components/profile-builder/date-field/date-field.vue';
+    import TextField from '@components/common/text-field.vue';
+    import EmailField from '@components/common/email-field.vue';
+    import PasswordField from '@components/common/password-field.vue';
+    import RadioField from '@components/common/radio-field.vue';
+    import SelectField from '@components/common/select-field.vue';
+    import SectionField from '@components/common/section-field.vue';
+    import SocialField from '@components/common/social-field.vue';
+    import UrlField from '@components/common/url-field.vue';
+    import DateField from '@components/common/date-field.vue';
 
     export default {
         mixins: [Mixin],
