@@ -1,5 +1,6 @@
 <template>
-    <div id="wpup-user-profile"   :class="isAdmin ? 'wpup-my-profile  wpup-member-content-wrap' : 'wpup-my-profile wpup-member-content-wrap wpup-user-profile-frontend'">
+    <div id="wpup-user-profile"   :class="isAdmin ? 'wpup-my-profile   wpup-member-content-wrap' : 'wpup-my-profile wpup-member-content-wrap wpup-user-profile-frontend'">
+        <frontend-menu v-if="is_admin != '1'"></frontend-menu>
         <a class="wpup-profile-update-btn wpup-btn-white" v-if="userCanUpdateProfile" @click.prevent="profileUpdateMode()" href="#">Update Profile</a>
         <div class="wpup-content-wrap">
             <div class="wpup-content-width" :style="contentWidth">
@@ -39,10 +40,23 @@
     </div>
 </template>
 
+<style lang="less">
+    #wpup-my-profile {
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 400;
+        margin-left: auto;
+        margin-right: auto;
+        background: #fff;
+        padding: 10px;
+    }
+</style>
+
 <script>
     import Mixin from '@components/profile-builder/mixin'
     import ProfileHeader from '@components/common/header.vue'
     import Row from '@components/common/row.vue'
+    import FrontendMenu from '@components/common/frontend-menu.vue'
 
 
     export default {
@@ -54,7 +68,8 @@
         },
         components: {
             'profile-header': ProfileHeader,
-            'row': Row
+            'row': Row,
+            'frontend-menu': FrontendMenu
         },
         created: function() {
             this.$store.commit('profileBuilder/closeSettingsPanel');

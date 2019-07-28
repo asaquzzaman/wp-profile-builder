@@ -11,16 +11,12 @@ wpSpearWPUPRegisterChildrenRoute('wpup_root',
             component: Users,
             name: 'users',
             children: [
-                // { 
-                // 	path: '/users/:user_id', 
-                // 	component: SingleUser, 
-                // 	name: 'single_user' 
-                // },
-                 // { 
-                 // 	path: ':page_number/page', 
-                 // 	component: WPUP_Member_Init, 
-                 // 	name: 'pagination' 
-                 // },
+                
+                { 
+                	path: 'pages/:current_page_number',
+                	component: Users, 
+                	name: 'pagination' 
+                },
             ] 
 
         },

@@ -19,9 +19,9 @@ class WPUP_Shortcode_My_Profile {
 	 * @param array $atts
 	 */
 	public static function output( $atts = array() ) {
-		wpup_get_template('my-profile/my-profile.php');
-		WPUP_Js_Templates::my_profile();
-		WPUP_Frontend_Scripts::my_profile_scripts();
+		echo '<div id="wpup-user-profile"></div>';
+
+		WPUP_Frontend_Scripts::profile_builder_scripts();
 	}
 
 }

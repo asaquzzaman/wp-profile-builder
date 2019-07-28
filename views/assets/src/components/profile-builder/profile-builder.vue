@@ -89,6 +89,7 @@
             'row': Row
         },
 		created: function() {
+            this.$store.commit('profileBuilder/profileSettings');
             wpupBus.$on( 'wpup_profile_builders_hook', this.getHook );
         },
 

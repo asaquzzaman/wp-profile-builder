@@ -6,6 +6,16 @@
 
 	export default {
 		created () {
+			if ( wpup.is_admin != '1' && 'profile_builder' === this.$route.name ) {
+				this.$router.push(
+					{
+						name: 'my_profile'
+					}
+				);
+
+				return;
+			}
+
 			if ( '/' === this.$route.path ) {
 				this.$router.push(
 					{
@@ -17,6 +27,15 @@
 
 		watch: {
 			'$route' () {
+				if ( wpup.is_admin != '1' && 'profile_builder' === this.$route.name ) {
+					this.$router.push(
+						{
+							name: 'my_profile'
+						}
+					);
+
+					return;
+				}
 				if ( '/' === this.$route.path ) {
 					this.$router.push(
 						{

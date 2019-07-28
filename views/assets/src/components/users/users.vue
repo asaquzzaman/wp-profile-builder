@@ -1,5 +1,6 @@
 <template>
 	<div id="wpup-members">
+		<frontend-menu v-if="is_admin != '1'"></frontend-menu>
 	    <div class="wpup-user-search-box-wrap">
 	        <label class="wpup-search-box-label" for="search-input"><i class="fa fa-search" aria-hidden="true"></i></label>
 	        <input class="wpup-user-search-field" @keyup="searchUser()" v-model="search_user" type="text" placeholder="Search Users">
@@ -41,20 +42,22 @@
 	            </div>
 	        </li>
 	    </ul>
+	    
+	    <pagination 
+            :total_pages="total" 
+            :current_page_number="page_number" 
+            :component_name="'pagination'">
+        </pagination> 
 
-
-	   <!--  <paginaton :pagination_spinner="pagination_spinner" :total="total" :user="search_user" :limit="limit" :page_number="page_number"></paginaton> -->
+	   <!-- <paginaton :pagination_spinner="pagination_spinner" :total="total" :user="search_user" :limit="limit" :page_number="page_number"></paginaton>   -->
 	</div>
 </template>
 
 
 <script>
 	// Register a global custom directive called v-wpup-datepicker
-	// Vue.directive('wpup-datepicker', {
-	//     inserted: function (el) {
-	//         WPUP_Profile_Builder.datepicker( el );
-	//     },
-	// });
+	import Pagination from '@components/common/pagination.vue'
+	import FrontendMenu from '@components/common/frontend-menu.vue'
 	
 	export default {
 		data: function() {
@@ -70,6 +73,11 @@
 				search_mode: false,
 				users: []
 			}
+		},
+
+		components: {
+			'pagination': Pagination,
+			'frontend-menu': FrontendMenu
 		},
 
 		created: function() {
@@ -99,7 +107,7 @@
 	        '$route': function (to, from) {
 	        	var self = this;
 	            
-	            if ( this.$route.params.page_number ) {
+	            if ( this.$route.params.current_page_number ) {
 
 	            	if ( !self.search_mode ) {
 	            		self.pagination_spinner = true;	
@@ -120,7 +128,7 @@
 	    	searchCross: function() {
 	    		this.$router.push({ 
 					name: 'pagination',
-					params: { user: '0', page_number: 1 }
+					params: { user: '0', current_page_number: 1 }
 				});
 	    		this.search_user = '';
 	    		this.search_cross = false;
@@ -129,8 +137,8 @@
 	    	getUsers: function(callback, request_from) {
 	    		
 	    		var request_data  = {
-						user: this.$route.params.user == '0' ? this.search_user : this.$route.params.user,
-						page_number: !this.$route.params.page_number ? 1 : this.$route.params.page_number,
+						user: this.$route.query.user == '0' ? this.search_user : this.$route.query.user,
+						page_number: !this.$route.params.current_page_number ? 1 : this.$route.params.current_page_number,
 						is_admin: this.is_admin,
 		                _wpnonce: wpup.nonce,
 		            },
@@ -141,7 +149,7 @@
 	            clearTimeout(timer); 
 
 	            this.user_loading = true;
-
+	            
 	            timer = setTimeout(function() { 
 			     	if(self.abort) { 
 			     		self.abort.abort();  
@@ -156,7 +164,7 @@
 							self.users             = res.users;
 							self.users_total       = res.total_users;
 							self.users_per_page    = res.limit;
-							self.users_page_number = self.$route.params.page_number;
+							self.users_page_number = self.$route.params.current_page_number;
 							self.user_loading      = false;
 
 		                    if ( self.search_user ) {
@@ -198,16 +206,16 @@
 	    	},
 
 	    	setRouter: function() {
-	    		if ( !this.search_user.trim() ) {
+
+	    		if ( this.search_user.trim() ) {
 	    			this.$router.push({ 
-	    				name: 'pagination',
-	    				params: { user: '0', page_number: 1 }
+	    				name: 'users',
+	    				query: { 
+	    					user: this.search_user.trim(), 
+	    				}
 	    			});
-	    		} else {
-	    			this.$router.push({ 
-	    				name: 'pagination',
-	    				params: { user: this.search_user.trim(), page_number: 1 }
-	    			});
+
+	    			this.getUsers();
 	    		}
 	    	}
 	    }

@@ -19,11 +19,10 @@ class WPUP_Shortcode_Members {
 	 * @param array $atts
 	 */
 	public static function output( $atts = array() ) {
-		wpup_get_template('members/members.php');
 		
-		WPUP_Js_Templates::members();
+		echo '<div id="wpup-user-profile"></div>';
 
-		WPUP_Frontend_Scripts::member_scripts();
+		WPUP_Frontend_Scripts::profile_builder_scripts();
 	}
 
 }
