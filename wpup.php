@@ -8,7 +8,7 @@
  * Author URI: http://mishubd.com
  * Requires at least: 4.0
  * Tested up to: 4.7.3
- * Text Domain: wpupb
+ * Text Domain: wpup
  * Domain Path: /i18n/languages/
  */
 
