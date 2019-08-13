@@ -73,6 +73,11 @@ A. Yes, any user can access other user's profile from users list page.
 
 == Changelog ==
 
+= 0.4 - Aug 13, 2017 =
+
+* [Update] Code smell.
+* [Update] Label content to only content.
+
 = 0.3 - December 25, 2017 =
 
 * [Fix] Form filed button dragging but not working.

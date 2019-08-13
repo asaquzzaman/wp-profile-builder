@@ -47,22 +47,23 @@ class WPUP_Settings_General extends WPUP_Settings_Page {
 			// 	'css'      => 'min-width:300px;',
 			// ),
 
+			// array(
+			// 	'title'    => __( 'Users List', 'wpup' ),
+			// 	'id'       => 'wpup_members_page_id',
+			// 	'type'     => 'single_select_page',
+			// 	'default'  => '',
+			// 	'class'    => 'wpup-enhanced-select-nostd',
+			// 	'css'      => 'min-width:300px;',
+			// ),
+
 			array(
-				'title'    => __( 'Users List', 'wpup' ),
+				'title'    => __( 'Front-end Page', 'wpup' ),
 				'id'       => 'wpup_members_page_id',
 				'type'     => 'single_select_page',
 				'default'  => '',
 				'class'    => 'wpup-enhanced-select-nostd',
 				'css'      => 'min-width:300px;',
-			),
-
-			array(
-				'title'    => __( 'My Profile', 'wpup' ),
-				'id'       => 'wpup_my_profile_page_id',
-				'type'     => 'single_select_page',
-				'default'  => '',
-				'class'    => 'wpup-enhanced-select-nostd',
-				'css'      => 'min-width:300px;',
+				'help'     => 'shortcode <b>[wpup_members]</b>'
 			),
 
 			array(

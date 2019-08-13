@@ -73,18 +73,18 @@ module.exports = function(grunt) {
             main: {
                 options: {
                     mode: 'zip',
-                    archive: './build/wedevs-project-manager-v' + pkg.version + '.zip'
+                    archive: './build/wp-profile-builder-v' + pkg.version + '.zip'
                 },
                 expand: true,
                 cwd: 'build/',
                 src: ['**/*'],
-                dest: 'wedevs-project-manager'
+                dest: 'wp-profile-builder'
             }
         },
 
         addtextdomain: {
             options: {
-                textdomain: 'wedevs-project-manager',
+                textdomain: 'wp-profile-builder',
             },
             update_all_domains: {
                 options: {
@@ -109,10 +109,10 @@ module.exports = function(grunt) {
                 args: ['run', 'makepot']
             },
 
-            dumpautoload:{
-                cmd: 'composer',
-                args: ['dumpautoload', '-o']
-            },
+            // dumpautoload:{
+            //     cmd: 'composer',
+            //     args: ['dumpautoload', '-o']
+            // },
 
         }
     });

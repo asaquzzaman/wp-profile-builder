@@ -300,7 +300,7 @@ class WPUP_Admin_Settings {
 								class="<?php echo esc_attr( $value['class'] ); ?>"
 								placeholder="<?php echo esc_attr( $value['placeholder'] ); ?>"
 								<?php echo implode( ' ', $custom_attributes ); ?>
-								/> <?php echo $description; ?>
+								/> <?php echo $description; ?> <?php echo empty($value['help']) ? '' : $value['help']; ?>
 						</td>
 					</tr><?php
 					break;
@@ -366,6 +366,7 @@ class WPUP_Admin_Settings {
 									}
 								?>
 							</select> <?php echo $description; ?>
+							<?php echo empty($value['help']) ? '' : $value['help']; ?>
 						</td>
 					</tr><?php
 					break;
@@ -525,6 +526,7 @@ class WPUP_Admin_Settings {
 						<th scope="row" class="titledesc"><?php echo esc_html( $value['title'] ) ?> <?php echo $tooltip_html; ?></th>
 						<td class="forminp">
 							<?php echo str_replace(' id=', " data-placeholder='" . esc_attr__( 'Select a page&hellip;', 'wpup' ) .  "' style='" . $value['css'] . "' class='" . $value['class'] . "' id=", wp_dropdown_pages( $args ) ); ?> <?php echo $description; ?>
+							<?php echo empty($value['help']) ? '' : $value['help']; ?>
 						</td>
 					</tr><?php
 					break;
